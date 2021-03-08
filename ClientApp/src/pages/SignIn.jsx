@@ -10,21 +10,21 @@ export function SignIn() {
 
   return (
     <>
-      {isSignInVisible ? (
-        <div onClick={handleChangeSignIn} className={styles.jediArchivesIntro}>
-          <button className={styles.battlesButton}>
-            <p>Jedi Archives</p>
-          </button>
+      {!isSignInVisible ? (
+        <div className={styles.jediArchivesIntro}>
+          <div onClick={handleChangeSignIn} className={styles.battlesButton}>
+            <p>Jedi Archives: Battles</p>
+          </div>
         </div>
       ) : (
         ''
       )}
-      {!isSignInVisible ? (
+      {isSignInVisible ? (
         <div className={styles.jediArchivesIntro}>
-          <button className={styles.battlesButton}>
-            <p>test</p>
-          </button>
-          <button onClick={handleChangeSignIn}>Go Back</button>
+          <div className={styles.battlesButtonSignIn}>
+            <button onClick={handleChangeSignIn}>Sign up</button>
+            <button onClick={handleChangeSignIn}>Log in</button>
+          </div>
         </div>
       ) : (
         ''
