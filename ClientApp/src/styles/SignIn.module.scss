@@ -1,0 +1,45 @@
+@font-face {
+  font-family: 'starwarsfont';
+  src: url('../fonts/Starjedi.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.jediArchivesIntro {
+  min-height: 100vh;
+  background-image: url(../images/JediArchiveLibrary.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.battlesButton {
+  animation: glow 2s infinite alternate;
+  background-color: rgb(22, 69, 97);
+  margin: 0;
+  padding: 9rem 6rem 9rem 6rem;
+  cursor: pointer;
+  color: white;
+  font-size: 2rem;
+  border: none;
+  padding: 10rem 2rem 10rem 2rem;
+  font-family: 'starwarsfont';
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px -10px rgb(0, 195, 255);
+  }
+  to {
+    box-shadow: 0 0 10px 10px rgb(0, 195, 255);
+  }
+}
+
+.battlesButton:hover {
+  background-color: white;
+  color: black;
+}
