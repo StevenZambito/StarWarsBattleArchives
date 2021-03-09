@@ -1,6 +1,7 @@
 import React from 'react'
 import './custom.scss'
 import { SignIn } from './pages/SignIn'
+import { Eras } from './pages/Eras'
 import { Route, Switch } from 'react-router-dom'
 
 export function App() {
@@ -8,11 +9,11 @@ export function App() {
     <div>
       <Switch>
         <Route exact path="/">
-          <SignIn />
+          <Eras />
         </Route>
-        {/* <Route exact path="/home">
-        <Home />
-      </Route> */}
+        <Route exact path="/home">
+          <Eras />
+        </Route>
         <Route path="*">
           <p>Not Found</p>
         </Route>

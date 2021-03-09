@@ -1,0 +1,105 @@
+.eraOne {
+  background-image: url('https://i.imgur.com/Xp0vjUa.jpg');
+  width: 350px;
+  height: 200px;
+  color: white;
+  cursor: pointer;
+  border: 0;
+  background-size: cover;
+  border: solid silver;
+  margin: 0.5rem 0rem 0.5rem 0rem;
+}
+
+.eraTwo {
+  background-image: url('https://milnersblog.files.wordpress.com/2019/04/star-wars-celebration-2019-official-full-mural-poster-hi-res.jpg');
+  width: 350px;
+  height: 200px;
+  color: white;
+  cursor: pointer;
+  border: 0;
+  background-size: cover;
+  border: solid silver;
+  margin: 0.5rem 0rem 0.5rem 0rem;
+}
+.eraThree {
+  background-image: url('https://www.farfarawaynews.com/wp-content/uploads/2019/04/Celebration-Muraljpg.jpg');
+  width: 350px;
+  height: 200px;
+  color: white;
+  cursor: pointer;
+  border: 0;
+  background-size: cover;
+  border: solid silver;
+  margin: 0.5rem 0rem 0.5rem 0rem;
+}
+.eraAll {
+  background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/826040f5-466d-4fe5-ad72-dbcdfd174c26/dcmey63-5338ac1d-ac70-4892-b576-4cb5f304e6f7.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvODI2MDQwZjUtNDY2ZC00ZmU1LWFkNzItZGJjZGZkMTc0YzI2XC9kY21leTYzLTUzMzhhYzFkLWFjNzAtNDg5Mi1iNTc2LTRjYjVmMzA0ZTZmNy5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.cdHJ9fCb7-h8YOz9b8DwAsSeDBaXrbxJk1fvII5-YVs');
+  width: 350px;
+  height: 200px;
+  color: white;
+  cursor: pointer;
+  border: 0;
+  background-size: cover;
+  border: solid silver;
+  margin: 0.5rem 0rem 0.5rem 0rem;
+}
+
+.eraOne:hover,
+.eraTwo:hover,
+.eraThree:hover,
+.eraAll:hover {
+  border: solid red;
+}
+
+.eraOne,
+.eraTwo,
+.eraThree,
+.eraAll {
+  margin: 1rem;
+}
+
+// on hover show the text era 1 , era 2 , etc.
+
+.erasOptions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  border: solid silver;
+  margin: 2rem;
+  background-color: rgb(22, 69, 97, 0.9);
+}
+
+.erasOptionsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.erasAllContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.erasOptions p {
+  font-size: 1rem;
+}
+
+.eras {
+  display: flex;
+  flex-direction: column;
+  // justify-content: space-between;
+  min-height: 100vh;
+}
+
+.eras header {
+  color: white;
+}
+
+.eras h1 {
+  text-align: center;
+  padding: 1rem;
+  font-size: 3rem;
+}
