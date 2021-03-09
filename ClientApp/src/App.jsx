@@ -2,6 +2,7 @@ import React from 'react'
 import './custom.scss'
 import { SignIn } from './pages/SignIn'
 import { Eras } from './pages/Eras'
+import { Battles } from './pages/Battles'
 import { Route, Switch } from 'react-router-dom'
 
 export function App() {
@@ -9,7 +10,7 @@ export function App() {
     <div>
       <Switch>
         <Route exact path="/">
-          <Eras />
+          <Battles />
         </Route>
         <Route exact path="/home">
           <Eras />

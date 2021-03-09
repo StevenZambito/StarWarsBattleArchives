@@ -1,0 +1,100 @@
+.addButton {
+  // font-family: sans-serif;
+  position: relative;
+  border-width: 2px;
+  border-style: solid;
+  height: 65px;
+  width: 65px;
+  font-size: 2rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.eraTwo {
+  background-image: url('https://milnersblog.files.wordpress.com/2019/04/star-wars-celebration-2019-official-full-mural-poster-hi-res.jpg');
+}
+.eraThree {
+  background-image: url('https://www.farfarawaynews.com/wp-content/uploads/2019/04/Celebration-Muraljpg.jpg');
+}
+
+.eraOne:hover,
+.eraTwo:hover,
+.eraThree:hover {
+  border: solid red;
+}
+
+.eraOne {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: silver;
+  margin: 2rem 0.5rem 0.5rem 0.5rem;
+  width: 285px;
+  height: 144px;
+  color: white;
+  cursor: pointer;
+  border: 0;
+  background-size: cover;
+  border: solid black;
+}
+
+.eraTwo,
+.eraThree {
+  margin: 2rem 0.5rem 0.5rem 0.5rem;
+  width: 290px;
+  height: 150px;
+  color: white;
+  cursor: pointer;
+  border: 0;
+  background-size: cover;
+  border: solid silver;
+}
+
+.erasOptions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  border: solid silver;
+  margin: 2rem 1rem 2rem 1rem;
+  padding: 1rem 0rem 2rem 0rem;
+  background-color: rgba(69, 177, 240, 0.8);
+}
+
+.erasOptionsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  p {
+    text-align: center;
+  }
+}
+
+.erasOptions {
+  p {
+    font-size: 1rem;
+  }
+  h1 {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.eras {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: url('https://starwarsblog.starwars.com/wp-content/uploads/2020/04/star-wars-backgrounds-25.jpg');
+}
+
+.eras header {
+  color: white;
+}
+
+.eras h1 {
+  text-align: center;
+  padding: 1rem;
+  font-size: 3rem;
+}

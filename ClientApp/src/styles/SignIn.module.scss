@@ -1,16 +1,13 @@
-@font-face {
-  font-family: 'starwarsfont';
-  src: url('../fonts/Starjedi.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
 .jediArchivesIntro {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  background-image: url(../images/JediArchiveLibrary.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .battlesButton {

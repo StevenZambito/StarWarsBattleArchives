@@ -68,7 +68,7 @@
   flex: 1;
   border: solid silver;
   margin: 2rem;
-  background-color: rgb(22, 69, 97, 0.9);
+  background-color: rgba(69, 177, 240, 0.9);
 }
 
 .erasOptionsContainer {
@@ -90,8 +90,11 @@
 .eras {
   display: flex;
   flex-direction: column;
-  // justify-content: space-between;
   min-height: 100vh;
+  background-image: url(../images/JediArchiveLibrary.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .eras header {
