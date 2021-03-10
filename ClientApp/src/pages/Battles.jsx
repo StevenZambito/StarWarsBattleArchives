@@ -9,7 +9,7 @@ export function Battles() {
           <h1>Battles</h1>
         </header>
         <div className={styles.erasOptions}>
-          <h3>Prequel Era</h3>
+          <h2>Prequel Era</h2>
 
           <div className={styles.wrap}>
             <div className={styles.search}>
@@ -22,6 +22,15 @@ export function Battles() {
                 <i className="fa fa-search"></i>
               </button>
             </div>
+          </div>
+
+          <div className={styles.test}>
+            <p>Sort By:</p>
+            <select>
+              <option>Battle: A to Z</option>
+              <option>Year</option>
+              <option>Era</option>
+            </select>
           </div>
 
           <div className={styles.erasOptionsContainer}>
