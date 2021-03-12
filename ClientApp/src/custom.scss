@@ -4,6 +4,7 @@
 
 html {
   height: 100%;
+  overflow-x: hidden;
 }
 
 @font-face {
@@ -17,4 +18,17 @@ body {
   margin: 0;
   min-height: 100%;
   font-family: 'starwarsfont';
+  overflow-x: hidden;
+}
+
+@media screen and (max-width: 800px) {
+  :root {
+    font: 14px / 1 sans-serif;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  :root {
+    font: 12px / 1 sans-serif;
+  }
 }

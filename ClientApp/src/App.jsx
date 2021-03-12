@@ -2,6 +2,7 @@ import React from 'react'
 import './custom.scss'
 import { SignIn } from './pages/SignIn'
 import { Eras } from './pages/Eras'
+import { Battle } from './pages/Battle'
 import { Battles } from './pages/Battles'
 import { CreateBattle } from './pages/CreateBattle'
 import { Route, Switch } from 'react-router-dom'
@@ -11,7 +12,13 @@ export function App() {
     <div>
       <Switch>
         <Route exact path="/">
-          <CreateBattle />
+          <Battle />
+        </Route>
+        <Route exact path="/">
+          <Battles />
+        </Route>
+        <Route exact path="/">
+          <Battles />
         </Route>
         <Route exact path="/home">
           <Eras />
