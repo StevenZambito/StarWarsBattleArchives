@@ -20,13 +20,19 @@ function SingleBattleFromList(props) {
 
 export function Battles() {
   const [battles, setBattles] = useState([])
+  const [filterText, setFilterText] = useState('')
 
   useEffect(() => {
     getBattles()
-  }, [])
+  }, [filterText])
 
   const getBattles = async () => {
-    const response = await axios.get('/api/Battles')
+    let url = '/api/Battles'
+
+    if (filterText.length !== 0) {
+      url = `/api/Battles?filter=${filterText}`
+    }
+    const response = await axios.get(url)
     setBattles(response.data)
   }
 
@@ -45,6 +51,10 @@ export function Battles() {
                 type="text"
                 className={styles.searchTerm}
                 placeholder="Which Battle are you looking for?"
+                value={filterText}
+                onChange={(event) => {
+                  setFilterText(event.target.value)
+                }}
               />
               <button type="submit" className={styles.searchButton}>
                 <i className="fa fa-search"></i>
