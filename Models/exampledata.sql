@@ -1,0 +1,3 @@
+TRUNCATE TABLE "Battles";
+
+INSERT INTO "Battles" ("Name", "Conflict", "Era", "Date", "Location", "Combatants1", "Combatants2", "Outcome", "Description") VALUES ('Battle of Hoth', 'Galactic Civil War', 'Age of Rebellion', '3 ABY', 'Hoth', '{Jedi Order, Something Else}', '{Empire}', 'Rebels successfully evacuate', 'The Battle of Hoth, also known as the attack on Hoth, the assault on Echo Base, or the attack on Echo Base, was a major battle fought in 3 ABY and was considered a major victory for the Galactic Empire and the single worst battlefield defeat suffered by the Rebel Alliance during the Galactic Civil War.');

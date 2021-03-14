@@ -14,7 +14,7 @@ namespace StarWarsBattleArchives.Models
         private static bool LOG_SQL_STATEMENTS_IN_DEVELOPMENT = false;
 
         // Add database tables here
-
+        public DbSet<Battle> Battles { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
