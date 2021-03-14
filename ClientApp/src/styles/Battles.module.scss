@@ -1,6 +1,42 @@
+.battles {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: url('https://starwarsblog.starwars.com/wp-content/uploads/2020/04/star-wars-backgrounds-25.jpg');
+}
+
+.battles h1 {
+  text-align: center;
+  padding: 1rem;
+  font-size: 3rem;
+  color: white;
+}
+
+.battlesOptionsBackground {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  border: solid silver;
+  margin: 2rem 1rem 2rem 1rem;
+  padding: 1rem 0rem 2rem 0rem;
+  background-color: rgba(69, 177, 240, 0.8);
+}
+
+.battlesOptionsBackground {
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.searchWrapper {
+  width: 370px;
+}
+
 .search {
   width: 100%;
-  // position: relative;
   display: flex;
 }
 
@@ -32,117 +68,7 @@
   font-size: 20px;
 }
 
-.wrap {
-  width: 370px;
-}
-
-.addButton {
-  position: relative;
-  border-width: 2px;
-  border-style: solid;
-  height: 65px;
-  width: 65px;
-  font-size: 2rem;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.imageHoverZoom {
-  transition: transform 0.5s ease;
-}
-
-.imageHoverZoom:hover {
-  filter: brightness(100%);
-  transform: scale(1.09);
-}
-
-.eraTwo {
-  background-image: url('https://milnersblog.files.wordpress.com/2019/04/star-wars-celebration-2019-official-full-mural-poster-hi-res.jpg');
-}
-.eraThree {
-  background-image: url('https://www.farfarawaynews.com/wp-content/uploads/2019/04/Celebration-Muraljpg.jpg');
-}
-
-.eraOne:hover,
-.eraTwo:hover,
-.eraThree:hover {
-  border: solid red;
-}
-
-.eraOne {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: silver;
-  margin: 2rem 0.5rem 0.5rem 0.5rem;
-  width: 285px;
-  height: 144px;
-  color: white;
-  cursor: pointer;
-  border: 0;
-  background-size: cover;
-  border: solid black;
-}
-
-.eraTwo,
-.eraThree {
-  margin: 2rem 0.5rem 0.5rem 0.5rem;
-  width: 290px;
-  height: 150px;
-  color: white;
-  cursor: pointer;
-  border: 0;
-  background-size: cover;
-  border: solid silver;
-}
-
-.erasOptions {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  border: solid silver;
-  margin: 2rem 1rem 2rem 1rem;
-  padding: 1rem 0rem 2rem 0rem;
-  background-color: rgba(69, 177, 240, 0.8);
-}
-
-.erasOptionsContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  p {
-    text-align: center;
-  }
-}
-
-.erasOptions {
-  h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-  }
-}
-
-.eras {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-image: url('https://starwarsblog.starwars.com/wp-content/uploads/2020/04/star-wars-backgrounds-25.jpg');
-}
-
-.eras header {
-  color: white;
-}
-
-.eras h1 {
-  text-align: center;
-  padding: 1rem;
-  font-size: 3rem;
-}
-
-.test {
+.dropDownSort {
   margin-top: 1rem;
   margin-bottom: 0.5rem;
   display: flex;
@@ -158,4 +84,65 @@
     border: none;
     font-size: 0.9rem;
   }
+}
+
+.battleOptionsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  p {
+    text-align: center;
+  }
+}
+
+.createBattle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: silver;
+  margin: 2rem 0.5rem 0.5rem 0.5rem;
+  width: 285px;
+  height: 144px;
+  color: white;
+  cursor: pointer;
+  border: 0;
+  background-size: cover;
+  border: solid black;
+}
+
+.addButton {
+  position: relative;
+  border-width: 2px;
+  border-style: solid;
+  height: 65px;
+  width: 65px;
+  font-size: 2rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.battleImageContainer {
+  transition: transform 0.5s ease;
+
+  img {
+    margin: 2rem 0.5rem 0.5rem 0.5rem;
+    width: 290px;
+    height: 150px;
+    color: white;
+    cursor: pointer;
+    border: 0;
+    background-size: cover;
+    border: solid silver;
+    object-fit: cover;
+  }
+
+  img:hover {
+    border: solid red;
+  }
+}
+
+.battleImageContainer:hover {
+  filter: brightness(100%);
+  transform: scale(1.09);
 }

@@ -4,14 +4,14 @@ import styles from '../styles/Battles.module.scss'
 export function Battles() {
   return (
     <>
-      <div className={styles.eras}>
+      <div className={styles.battles}>
         <header>
           <h1>Battles</h1>
         </header>
-        <div className={styles.erasOptions}>
+        <div className={styles.battlesOptionsBackground}>
           <h2>Prequel Era</h2>
 
-          <div className={styles.wrap}>
+          <div className={styles.searchWrapper}>
             <div className={styles.search}>
               <input
                 type="text"
@@ -24,7 +24,7 @@ export function Battles() {
             </div>
           </div>
 
-          <div className={styles.test}>
+          <div className={styles.dropDownSort}>
             <p>Sort By:</p>
             <select>
               <option>Battle: A to Z</option>
@@ -33,53 +33,83 @@ export function Battles() {
             </select>
           </div>
 
-          <div className={styles.erasOptionsContainer}>
+          <div className={styles.battleOptionsContainer}>
             <div>
-              <div className={styles.eraOne}>
+              <div className={styles.createBattle}>
                 <button className={styles.addButton}>+</button>
               </div>
               <p>Create Battle</p>
               <br></br>
               <br></br>
             </div>
-            <div className={styles.imageHoverZoom}>
-              <button className={styles.eraTwo}>{/* <p>Era 2</p> */}</button>
+            <div className={styles.battleImageContainer}>
+              <img
+                src="https://images-na.ssl-images-amazon.com/images/I/91MMkv35K5L._RI_.jpg"
+                alt="starwars"
+              />
               <p>Battle of Hoth</p>
               <p>Year 30000</p>
               <p>Empire v Rebellion</p>
             </div>
-            <div className={styles.imageHoverZoom}>
-              <button className={styles.eraThree}>{/* <p>Era 3</p> */}</button>
+            <div className={styles.battleImageContainer}>
+              <img
+                src="https://starwarsblog.starwars.com/wp-content/uploads/2021/03/women-of-star-wars-2021-tall-B.jpg"
+                alt="starwars"
+              />
               <p>Battle of Hoth</p>
               <p>Year 30000</p>
               <p>Empire v Rebellion</p>
             </div>
-            <div className={styles.imageHoverZoom}>
-              <button className={styles.eraThree}>{/* <p>Era 3</p> */}</button>
+            <div className={styles.battleImageContainer}>
+              <img
+                src="https://i.insider.com/5d939b852e22af3f020abf3d?width=1136&format=jpeg"
+                alt="starwars"
+              />
               <p>Battle of Hoth</p>
               <p>Year 30000</p>
               <p>Empire v Rebellion</p>
             </div>
-            <div className={styles.imageHoverZoom}>
-              <button className={styles.eraThree}>{/* <p>Era 3</p> */}</button>
+            <div className={styles.battleImageContainer}>
+              <img
+                src="https://images-na.ssl-images-amazon.com/images/I/91MMkv35K5L._RI_.jpg"
+                alt="starwars"
+              />
               <p>Battle of Hoth</p>
               <p>Year 30000</p>
               <p>Empire v Rebellion</p>
             </div>
-            <div className={styles.imageHoverZoom}>
-              <button className={styles.eraThree}>{/* <p>Era 3</p> */}</button>
+            <div className={styles.battleImageContainer}>
+              <img
+                src="https://images-na.ssl-images-amazon.com/images/I/91MMkv35K5L._RI_.jpg"
+                alt="starwars"
+              />
               <p>Battle of Hoth</p>
               <p>Year 30000</p>
               <p>Empire v Rebellion</p>
             </div>
-            <div className={styles.imageHoverZoom}>
-              <button className={styles.eraThree}>{/* <p>Era 3</p> */}</button>
+            <div className={styles.battleImageContainer}>
+              <img
+                src="https://images-na.ssl-images-amazon.com/images/I/91MMkv35K5L._RI_.jpg"
+                alt="starwars"
+              />
               <p>Battle of Hoth</p>
               <p>Year 30000</p>
               <p>Empire v Rebellion</p>
             </div>
-            <div className={styles.imageHoverZoom}>
-              <button className={styles.eraThree}>{/* <p>Era 3</p> */}</button>
+            <div className={styles.battleImageContainer}>
+              <img
+                src="https://images-na.ssl-images-amazon.com/images/I/91MMkv35K5L._RI_.jpg"
+                alt="starwars"
+              />
+              <p>Battle of Hoth</p>
+              <p>Year 30000</p>
+              <p>Empire v Rebellion</p>
+            </div>
+            <div className={styles.battleImageContainer}>
+              <img
+                src="https://images-na.ssl-images-amazon.com/images/I/91MMkv35K5L._RI_.jpg"
+                alt="starwars"
+              />
               <p>Battle of Hoth</p>
               <p>Year 30000</p>
               <p>Empire v Rebellion</p>
