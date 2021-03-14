@@ -2,6 +2,22 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import styles from '../styles/Battles.module.scss'
 
+function SingleBattleFromList(props) {
+  return (
+    <div className={styles.battleImageContainer}>
+      <img
+        src="https://images-na.ssl-images-amazon.com/images/I/91MMkv35K5L._RI_.jpg"
+        alt="starwars"
+      />
+      <p>{props.name}</p>
+      <p>{props.date}</p>
+      <p>
+        {props.combatants1} vs {props.combatants2}
+      </p>
+    </div>
+  )
+}
+
 export function Battles() {
   const [battles, setBattles] = useState([])
 
@@ -56,17 +72,13 @@ export function Battles() {
             </div>
             {battles.map((battle) => {
               return (
-                <div key={battle.id} className={styles.battleImageContainer}>
-                  <img
-                    src="https://images-na.ssl-images-amazon.com/images/I/91MMkv35K5L._RI_.jpg"
-                    alt="starwars"
-                  />
-                  <p>{battle.name}</p>
-                  <p>{battle.date}</p>
-                  <p>
-                    {battle.combatants1} vs {battle.combatants2}
-                  </p>
-                </div>
+                <SingleBattleFromList
+                  key={battle.id}
+                  name={battle.name}
+                  date={battle.date}
+                  combatants1={battle.combatants1}
+                  combatants2={battle.combatants2}
+                />
               )
             })}
             {/* <div className={styles.battleImageContainer}>
