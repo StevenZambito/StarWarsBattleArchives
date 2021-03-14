@@ -1,7 +1,19 @@
-import React from 'react'
+import axios from 'axios'
+import { useState, useEffect } from 'react'
 import styles from '../styles/Battles.module.scss'
 
 export function Battles() {
+  const [battles, setBattles] = useState([])
+
+  useEffect(() => {
+    getBattles()
+  }, [])
+
+  const getBattles = async () => {
+    const response = await axios.get('/api/Battles')
+    setBattles(response.data)
+  }
+
   return (
     <>
       <div className={styles.battles}>
@@ -42,7 +54,22 @@ export function Battles() {
               <br></br>
               <br></br>
             </div>
-            <div className={styles.battleImageContainer}>
+            {battles.map((battle) => {
+              return (
+                <div key={battle.id} className={styles.battleImageContainer}>
+                  <img
+                    src="https://images-na.ssl-images-amazon.com/images/I/91MMkv35K5L._RI_.jpg"
+                    alt="starwars"
+                  />
+                  <p>{battle.name}</p>
+                  <p>{battle.date}</p>
+                  <p>
+                    {battle.combatants1} vs {battle.combatants2}
+                  </p>
+                </div>
+              )
+            })}
+            {/* <div className={styles.battleImageContainer}>
               <img
                 src="https://images-na.ssl-images-amazon.com/images/I/91MMkv35K5L._RI_.jpg"
                 alt="starwars"
@@ -50,8 +77,8 @@ export function Battles() {
               <p>Battle of Hoth</p>
               <p>Year 30000</p>
               <p>Empire v Rebellion</p>
-            </div>
-            <div className={styles.battleImageContainer}>
+            </div> */}
+            {/* <div className={styles.battleImageContainer}>
               <img
                 src="https://starwarsblog.starwars.com/wp-content/uploads/2021/03/women-of-star-wars-2021-tall-B.jpg"
                 alt="starwars"
@@ -59,8 +86,8 @@ export function Battles() {
               <p>Battle of Hoth</p>
               <p>Year 30000</p>
               <p>Empire v Rebellion</p>
-            </div>
-            <div className={styles.battleImageContainer}>
+            </div> */}
+            {/* <div className={styles.battleImageContainer}>
               <img
                 src="https://i.insider.com/5d939b852e22af3f020abf3d?width=1136&format=jpeg"
                 alt="starwars"
@@ -68,8 +95,8 @@ export function Battles() {
               <p>Battle of Hoth</p>
               <p>Year 30000</p>
               <p>Empire v Rebellion</p>
-            </div>
-            <div className={styles.battleImageContainer}>
+            </div> */}
+            {/* <div className={styles.battleImageContainer}>
               <img
                 src="https://images-na.ssl-images-amazon.com/images/I/91MMkv35K5L._RI_.jpg"
                 alt="starwars"
@@ -77,8 +104,8 @@ export function Battles() {
               <p>Battle of Hoth</p>
               <p>Year 30000</p>
               <p>Empire v Rebellion</p>
-            </div>
-            <div className={styles.battleImageContainer}>
+            </div> */}
+            {/* <div className={styles.battleImageContainer}>
               <img
                 src="https://images-na.ssl-images-amazon.com/images/I/91MMkv35K5L._RI_.jpg"
                 alt="starwars"
@@ -86,8 +113,8 @@ export function Battles() {
               <p>Battle of Hoth</p>
               <p>Year 30000</p>
               <p>Empire v Rebellion</p>
-            </div>
-            <div className={styles.battleImageContainer}>
+            </div> */}
+            {/* <div className={styles.battleImageContainer}>
               <img
                 src="https://images-na.ssl-images-amazon.com/images/I/91MMkv35K5L._RI_.jpg"
                 alt="starwars"
@@ -95,8 +122,8 @@ export function Battles() {
               <p>Battle of Hoth</p>
               <p>Year 30000</p>
               <p>Empire v Rebellion</p>
-            </div>
-            <div className={styles.battleImageContainer}>
+            </div> */}
+            {/* <div className={styles.battleImageContainer}>
               <img
                 src="https://images-na.ssl-images-amazon.com/images/I/91MMkv35K5L._RI_.jpg"
                 alt="starwars"
@@ -104,8 +131,8 @@ export function Battles() {
               <p>Battle of Hoth</p>
               <p>Year 30000</p>
               <p>Empire v Rebellion</p>
-            </div>
-            <div className={styles.battleImageContainer}>
+            </div> */}
+            {/* <div className={styles.battleImageContainer}>
               <img
                 src="https://images-na.ssl-images-amazon.com/images/I/91MMkv35K5L._RI_.jpg"
                 alt="starwars"
@@ -113,7 +140,7 @@ export function Battles() {
               <p>Battle of Hoth</p>
               <p>Year 30000</p>
               <p>Empire v Rebellion</p>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

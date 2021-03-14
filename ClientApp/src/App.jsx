@@ -12,7 +12,7 @@ export function App() {
     <div>
       <Switch>
         <Route exact path="/">
-          <Eras />
+          <Battles />
         </Route>
         <Route exact path="/">
           <Battles />
