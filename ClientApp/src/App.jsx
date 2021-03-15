@@ -12,16 +12,16 @@ export function App() {
     <div>
       <Switch>
         <Route exact path="/">
-          <CreateBattle />
+          <Eras />
         </Route>
-        <Route exact path="/">
-          <CreateBattle />
-        </Route>
-        <Route exact path="/">
+        <Route exact path="/battles">
           <Battles />
         </Route>
-        <Route exact path="/home">
-          <Eras />
+        <Route exact path="/battle">
+          <Battle />
+        </Route>
+        <Route exact path="/create">
+          <CreateBattle />
         </Route>
         <Route path="*">
           <p>Not Found</p>

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import styles from '../styles/CreateBattle.module.scss'
 
 export function CreateBattle() {
@@ -19,6 +19,8 @@ export function CreateBattle() {
     outcome: '',
     description: '',
   })
+
+  const history = useHistory()
 
   const updateBattle = (event) => {
     const value = event.target.value
@@ -89,6 +91,7 @@ export function CreateBattle() {
   const handleFormSubmit = (event) => {
     event.preventDefault()
     postBattle()
+    history.push('/')
   }
 
   return (

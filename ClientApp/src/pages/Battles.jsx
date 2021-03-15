@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import styles from '../styles/Battles.module.scss'
 
 function SingleBattleFromList(props) {
@@ -23,10 +24,10 @@ export function Battles() {
   const [filterText, setFilterText] = useState('')
 
   useEffect(() => {
-    getBattles()
+    getBattles(filterText)
   }, [filterText])
 
-  const getBattles = async () => {
+  const getBattles = async (filterText) => {
     let url = '/api/Battles'
 
     if (filterText.length !== 0) {
@@ -73,9 +74,11 @@ export function Battles() {
 
           <div className={styles.battleOptionsContainer}>
             <div>
-              <div className={styles.createBattle}>
-                <button className={styles.addButton}>+</button>
-              </div>
+              <Link to="/create">
+                <div className={styles.createBattle}>
+                  <button className={styles.addButton}>+</button>
+                </div>
+              </Link>
               <p>Create Battle</p>
               <br></br>
               <br></br>
@@ -91,78 +94,6 @@ export function Battles() {
                 />
               )
             })}
-            {/* <div className={styles.battleImageContainer}>
-              <img
-                src="https://images-na.ssl-images-amazon.com/images/I/91MMkv35K5L._RI_.jpg"
-                alt="starwars"
-              />
-              <p>Battle of Hoth</p>
-              <p>Year 30000</p>
-              <p>Empire v Rebellion</p>
-            </div> */}
-            {/* <div className={styles.battleImageContainer}>
-              <img
-                src="https://starwarsblog.starwars.com/wp-content/uploads/2021/03/women-of-star-wars-2021-tall-B.jpg"
-                alt="starwars"
-              />
-              <p>Battle of Hoth</p>
-              <p>Year 30000</p>
-              <p>Empire v Rebellion</p>
-            </div> */}
-            {/* <div className={styles.battleImageContainer}>
-              <img
-                src="https://i.insider.com/5d939b852e22af3f020abf3d?width=1136&format=jpeg"
-                alt="starwars"
-              />
-              <p>Battle of Hoth</p>
-              <p>Year 30000</p>
-              <p>Empire v Rebellion</p>
-            </div> */}
-            {/* <div className={styles.battleImageContainer}>
-              <img
-                src="https://images-na.ssl-images-amazon.com/images/I/91MMkv35K5L._RI_.jpg"
-                alt="starwars"
-              />
-              <p>Battle of Hoth</p>
-              <p>Year 30000</p>
-              <p>Empire v Rebellion</p>
-            </div> */}
-            {/* <div className={styles.battleImageContainer}>
-              <img
-                src="https://images-na.ssl-images-amazon.com/images/I/91MMkv35K5L._RI_.jpg"
-                alt="starwars"
-              />
-              <p>Battle of Hoth</p>
-              <p>Year 30000</p>
-              <p>Empire v Rebellion</p>
-            </div> */}
-            {/* <div className={styles.battleImageContainer}>
-              <img
-                src="https://images-na.ssl-images-amazon.com/images/I/91MMkv35K5L._RI_.jpg"
-                alt="starwars"
-              />
-              <p>Battle of Hoth</p>
-              <p>Year 30000</p>
-              <p>Empire v Rebellion</p>
-            </div> */}
-            {/* <div className={styles.battleImageContainer}>
-              <img
-                src="https://images-na.ssl-images-amazon.com/images/I/91MMkv35K5L._RI_.jpg"
-                alt="starwars"
-              />
-              <p>Battle of Hoth</p>
-              <p>Year 30000</p>
-              <p>Empire v Rebellion</p>
-            </div> */}
-            {/* <div className={styles.battleImageContainer}>
-              <img
-                src="https://images-na.ssl-images-amazon.com/images/I/91MMkv35K5L._RI_.jpg"
-                alt="starwars"
-              />
-              <p>Battle of Hoth</p>
-              <p>Year 30000</p>
-              <p>Empire v Rebellion</p>
-            </div> */}
           </div>
         </div>
       </div>
