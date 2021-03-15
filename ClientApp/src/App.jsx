@@ -12,10 +12,10 @@ export function App() {
     <div>
       <Switch>
         <Route exact path="/">
-          <Battles />
+          <CreateBattle />
         </Route>
         <Route exact path="/">
-          <Battles />
+          <CreateBattle />
         </Route>
         <Route exact path="/">
           <Battles />

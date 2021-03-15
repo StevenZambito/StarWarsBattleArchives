@@ -42,10 +42,6 @@
   margin-top: 1rem;
 }
 
-.formContainer p > p {
-  margin-bottom: 0.3rem;
-}
-
 .formInput {
   display: flex;
   flex-direction: column;
@@ -56,6 +52,7 @@
     align-items: center;
 
     label {
+      margin-top: 0rem;
       margin-left: 1rem;
     }
 
@@ -81,8 +78,38 @@
   border-radius: 0.2rem;
 }
 
-#vs {
-  margin-left: 3rem;
+.formInput {
+  label {
+    margin-top: 1rem;
+  }
+  button {
+    width: 100px;
+    cursor: pointer;
+  }
+}
+
+.combatantsContainer {
+  flex-wrap: wrap;
+  padding-top: 0.5rem;
+  // border: solid black;
+}
+
+.theX {
+  cursor: pointer;
+  padding-left: 0.3rem;
+  padding-bottom: 0.3rem;
+  font-size: 0.9rem;
+}
+
+.theAddedCombatant {
+  border: solid grey;
+  padding: 0.2rem;
+  background-color: pink;
+  p {
+    margin: 0;
+    padding: 0;
+    color: rgb(70, 70, 70);
+  }
 }
 
 .formSubmit input[type='submit'] {
