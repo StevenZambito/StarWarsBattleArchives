@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using StarWarsBattleArchives.Models;
@@ -9,9 +10,10 @@ using StarWarsBattleArchives.Models;
 namespace StarWarsBattleArchives.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20210315173617_AddBattleRequiredFields")]
+    partial class AddBattleRequiredFields
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,9 +29,11 @@ namespace StarWarsBattleArchives.Migrations
                         .UseIdentityByDefaultColumn();
 
                     b.Property<List<string>>("Combatants1")
+                        .IsRequired()
                         .HasColumnType("text[]");
 
                     b.Property<List<string>>("Combatants2")
+                        .IsRequired()
                         .HasColumnType("text[]");
 
                     b.Property<string>("Conflict")

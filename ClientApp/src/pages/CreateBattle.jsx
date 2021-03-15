@@ -20,6 +20,8 @@ export function CreateBattle() {
     description: '',
   })
 
+  const [errorMessage, setErrorMessage] = useState('')
+
   const history = useHistory()
 
   const updateBattle = (event) => {
@@ -85,13 +87,23 @@ export function CreateBattle() {
   }
 
   const postBattle = async () => {
-    const response = await axios.post('/api/Battles', newBattle)
+    try {
+      await axios.post('/api/Battles', newBattle)
+      history.push('/')
+    } catch (error) {
+      if (error.response.status === 400) {
+        window.alert('hello')
+        const errorString = Object.values(error.response.data.errors).join(' ')
+        console.log(errorString)
+        setErrorMessage(errorString.toLowerCase())
+      }
+    }
   }
 
   const handleFormSubmit = (event) => {
     event.preventDefault()
+
     postBattle()
-    history.push('/')
   }
 
   return (
@@ -114,6 +126,7 @@ export function CreateBattle() {
             onSubmit={(event) => handleSubmit(event)}
             className={styles.formContainer}
           >
+            <p>{errorMessage}</p>
             <div className={styles.formInput}>
               <label htmlFor="name">Name</label>
               <input
@@ -236,7 +249,7 @@ export function CreateBattle() {
                 {newBattle.combatants2.map((combatant, index) => {
                   return (
                     <div key={index} className={styles.theAddedCombatant}>
-                      <p>{combatant}</p>
+                      <p>{combatant} </p>
                       <span
                         className={styles.theX}
                         onClick={() => deleteCombatant2(index)}
