@@ -34,6 +34,8 @@ namespace StarWarsBattleArchives.Models
         [Required]
         public string Description { get; set; }
 
+        public List<Comment> Comments { get; set; }
+
         
     }
 }

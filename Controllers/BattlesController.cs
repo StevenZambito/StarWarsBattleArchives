@@ -36,9 +36,9 @@ namespace StarWarsBattleArchives.Controllers
             if(filter == null) {
             // Uses the database context in `_context` to request all of the Battles, sort
             // them by row id and return them as a JSON array.
-                return await _context.Battles.OrderBy(row => row.Id).ToListAsync();
+                return await _context.Battles.OrderBy(row => row.Id).Include(battle => battle.Comments).ToListAsync();
             } else {
-                return await _context.Battles.Where(battle => battle.Name.ToLower().Contains(filter.ToLower())).OrderBy(row => row.Id).ToListAsync();
+                return await _context.Battles.Where(battle => battle.Name.ToLower().Contains(filter.ToLower())).OrderBy(row => row.Id).Include(battle => battle.Comments).ToListAsync();
             }
             
             
@@ -53,8 +53,7 @@ namespace StarWarsBattleArchives.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Battle>> GetBattle(int id)
         {
-            // Find the battle in the database using `FindAsync` to look it up by id
-            var battle = await _context.Battles.FindAsync(id);
+            var battle = await _context.Battles.Include(battle => battle.Comments).Where(battle => battle.Id == id).FirstOrDefaultAsync();
 
             // If we didn't find anything, we receive a `null` in return
             if (battle == null)

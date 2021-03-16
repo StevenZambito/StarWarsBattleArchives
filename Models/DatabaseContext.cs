@@ -15,6 +15,7 @@ namespace StarWarsBattleArchives.Models
 
         // Add database tables here
         public DbSet<Battle> Battles { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

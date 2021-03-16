@@ -15,6 +15,7 @@ export function Battle() {
     combatants2: [],
     outcome: '',
     description: '',
+    comments: [],
   })
 
   const params = useParams()
@@ -126,30 +127,22 @@ export function Battle() {
             </div>
 
             <div className={styles.commentSection}>
-              <div className={styles.myContainerThree}>
-                <div className={styles.userImage}>
-                  <img
-                    src="https://static.wikia.nocookie.net/bfdbd325-0a25-419a-ba56-1dd2e41edcc6"
-                    alt="user profile"
-                  />
-                  <p>Darth Vader</p>
+              {battle.comments.map((comment) => (
+                <div className={styles.myContainerThree}>
+                  <div className={styles.userImage}>
+                    <img
+                      src="https://static.wikia.nocookie.net/bfdbd325-0a25-419a-ba56-1dd2e41edcc6"
+                      alt="user profile"
+                    />
+                    <p>Darth Vader</p>
+                  </div>
+
+                  <div className={styles.theForm}>
+                    <p className={styles.formInput}>{comment.body}</p>
+                    <p id={styles.commentDateTime}>{comment.createdAt}</p>
+                  </div>
                 </div>
-                {/* <div className={styles.newCommentContainer}> */}
-                <div className={styles.theForm}>
-                  <p className={styles.formInput}>
-                    "What I remember about the rise of the Empire is… is how
-                    quiet it was. During the waning hours of the Clone Wars, the
-                    501st was discreetly transferred back to Coruscant. It was a
-                    silent trip; We all knew what was about to happen, what we
-                    were about to do. Did we have any doubts? Any private
-                    traitorous thoughts? Perhaps, but no one said a word. Not on
-                    the flight to Coruscant, not when Order 66 came down, and
-                    not when we marched into the Jedi Temple. Not a word."
-                  </p>
-                  <p id={styles.commentDateTime}>March 11th 2021 4:28pm</p>
-                </div>
-                {/* </div> */}
-              </div>
+              ))}
             </div>
           </div>
         </div>
