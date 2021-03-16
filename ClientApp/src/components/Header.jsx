@@ -11,6 +11,7 @@ export function Header() {
             <Link to="/new">
               <i className="fa fa-plus"></i> Battle
             </Link>
+            <Link to="/SignUp">Sign up</Link>
             <p>Welcome back, Steven!</p>
           </nav>
         </li>

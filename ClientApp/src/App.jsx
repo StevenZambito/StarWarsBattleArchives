@@ -1,6 +1,6 @@
 import React from 'react'
 import './custom.scss'
-// import { SignIn } from './pages/SignIn'
+import { SignUp } from './pages/SignUp'
 import { Eras } from './pages/Eras'
 import { Battle } from './pages/Battle'
 import { Battles } from './pages/Battles'
@@ -22,6 +22,9 @@ export function App() {
         </Route>
         <Route exact path="/create">
           <CreateBattle />
+        </Route>
+        <Route exact path="/SignUp">
+          <SignUp />
         </Route>
         <Route path="*">
           <p>Not Found</p>
