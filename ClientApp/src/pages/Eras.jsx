@@ -1,14 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Header } from '../components/Header'
 import styles from '../styles/Eras.module.scss'
 
 export function Eras() {
   return (
     <>
       <div className={styles.eras}>
-        <header>
-          <h1>Battles</h1>
-        </header>
+        <Header />
         <div className={styles.erasOptions}>
           <div className={styles.erasOptionsContainer}>
             <Link to="/battles">

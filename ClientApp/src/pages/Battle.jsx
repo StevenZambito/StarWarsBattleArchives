@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useParams } from 'react-router'
 import { Link } from 'react-router-dom'
 import { Header } from '../components/Header'
+import { isLoggedIn } from '../auth'
 import format from 'date-fns/format'
 import styles from '../styles/Battle.module.scss'
 
@@ -131,36 +132,39 @@ export function Battle() {
             <button>Delete</button>
             <h2>Comments</h2>
           </div>
-          <div className={styles.myContainer}>
-            <div className={styles.userImage}>
-              <img
-                src="https://static.wikia.nocookie.net/bfdbd325-0a25-419a-ba56-1dd2e41edcc6"
-                alt="user profile"
-              />
-            </div>
-            {/* <div className={styles.newCommentContainer}> */}
-            <form className={styles.theForm}>
-              <p className={styles.formInput}>
-                <label htmlFor="body"></label>
-                <textarea
-                  name="body"
-                  id="body"
-                  value={newComment.body}
-                  onChange={handleNewCommentTextFieldChange}
-                ></textarea>
-              </p>
-            </form>
-            {/* </div> */}
-            <div className={styles.myContainerTwo}>
-              <p>
-                <input
-                  type="submit"
-                  value="Submit"
-                  onClick={(event) => handleNewCommentSubmit(event)}
+
+          {isLoggedIn() && (
+            <div className={styles.myContainer}>
+              <div className={styles.userImage}>
+                <img
+                  src="https://static.wikia.nocookie.net/bfdbd325-0a25-419a-ba56-1dd2e41edcc6"
+                  alt="user profile"
                 />
-              </p>
+              </div>
+              {/* <div className={styles.newCommentContainer}> */}
+              <form className={styles.theForm}>
+                <p className={styles.formInput}>
+                  <label htmlFor="body"></label>
+                  <textarea
+                    name="body"
+                    id="body"
+                    value={newComment.body}
+                    onChange={handleNewCommentTextFieldChange}
+                  ></textarea>
+                </p>
+              </form>
+              {/* </div> */}
+              <div className={styles.myContainerTwo}>
+                <p>
+                  <input
+                    type="submit"
+                    value="Submit"
+                    onClick={(event) => handleNewCommentSubmit(event)}
+                  />
+                </p>
+              </div>
             </div>
-          </div>
+          )}
 
           <div className={styles.commentSection}>
             {battle.comments.map((comment) => (
