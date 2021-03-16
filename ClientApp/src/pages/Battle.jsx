@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router'
 import { Link } from 'react-router-dom'
+import { Header } from '../components/Header'
 import format from 'date-fns/format'
 import styles from '../styles/Battle.module.scss'
 
@@ -62,6 +63,7 @@ export function Battle() {
 
   return (
     <div className={styles.eras}>
+      <Header />
       <div className={styles.erasOptions}>
         <Link to="/">
           <i className="fa fa-home"></i>

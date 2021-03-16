@@ -1,0 +1,31 @@
+header .avatar {
+  margin: 0 1rem;
+  // background-image: url('./images/square.svg');
+  height: 64px;
+  width: 64px;
+  padding: 0.4rem;
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+header nav > * {
+  margin: 0 1rem;
+}
+
+header nav a {
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  text-decoration: none;
+}
+
+header ul {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0.5rem 1rem 0rem 1rem;
+}

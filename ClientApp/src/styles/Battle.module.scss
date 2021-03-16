@@ -5,19 +5,11 @@
   background-color: rgba(69, 177, 240, 0.8);
 }
 
-.erasOptions p {
-  margin-top: 1rem;
-}
-
 .eras {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   background-image: url('https://starwarsblog.starwars.com/wp-content/uploads/2020/04/star-wars-backgrounds-25.jpg');
-}
-
-.eras header {
-  color: white;
 }
 
 #commentDateTime {

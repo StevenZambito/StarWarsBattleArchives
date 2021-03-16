@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
+import { Header } from '../components/Header'
 import styles from '../styles/CreateBattle.module.scss'
 
 export function CreateBattle() {
@@ -109,9 +110,7 @@ export function CreateBattle() {
   return (
     <>
       <div className={styles.createBattle}>
-        <header>
-          <h1>Battles</h1>
-        </header>
+        <Header />
 
         <div className={styles.createBattleContainer}>
           <nav>

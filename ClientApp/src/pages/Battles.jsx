@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { Header } from '../components/Header'
 import styles from '../styles/Battles.module.scss'
 
 function SingleBattleFromList(props) {
@@ -42,9 +43,7 @@ export function Battles() {
   return (
     <>
       <div className={styles.battles}>
-        <header>
-          <h1>Battles</h1>
-        </header>
+        <Header />
         <div className={styles.battlesOptionsBackground}>
           <Link to="/">
             <i className="fa fa-home"></i>
