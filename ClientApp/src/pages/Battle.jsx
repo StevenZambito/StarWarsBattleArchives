@@ -19,7 +19,12 @@ export function Battle() {
   })
 
   const params = useParams()
-  const id = params.id
+  const id = Number(params.id)
+
+  const [newComment, setNewComment] = useState({
+    body: '',
+    battleId: id,
+  })
 
   useEffect(() => {
     async function getBattle() {
@@ -29,6 +34,28 @@ export function Battle() {
 
     getBattle()
   }, [id])
+
+  function handleNewCommentTextFieldChange(event) {
+    const name = event.target.name
+    const value = event.target.value
+
+    setNewComment({ ...newComment, [name]: value })
+  }
+
+  async function handleNewCommentSubmit(event) {
+    event.preventDefault()
+
+    const response = await axios.post(`/api/Comments`, newComment)
+    setNewComment(response.data)
+
+    setNewComment({
+      ...newComment,
+      body: '',
+    })
+
+    const battlesResponse = await axios.get(`/api/battles/${id}`)
+    setBattle(battlesResponse.data)
+  }
 
   return (
     <>
@@ -114,14 +141,23 @@ export function Battle() {
               {/* <div className={styles.newCommentContainer}> */}
               <form className={styles.theForm}>
                 <p className={styles.formInput}>
-                  <label htmlFor="name"></label>
-                  <textarea name="description"></textarea>
+                  <label htmlFor="body"></label>
+                  <textarea
+                    name="body"
+                    id="body"
+                    value={newComment.body}
+                    onChange={handleNewCommentTextFieldChange}
+                  ></textarea>
                 </p>
               </form>
               {/* </div> */}
               <div className={styles.myContainerTwo}>
                 <p>
-                  <input type="submit" value="Submit" />
+                  <input
+                    type="submit"
+                    value="Submit"
+                    onClick={(event) => handleNewCommentSubmit(event)}
+                  />
                 </p>
               </div>
             </div>
