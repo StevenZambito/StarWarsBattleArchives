@@ -1,6 +1,6 @@
 import React from 'react'
 import './custom.scss'
-import { SignIn } from './pages/SignIn'
+// import { SignIn } from './pages/SignIn'
 import { Eras } from './pages/Eras'
 import { Battle } from './pages/Battle'
 import { Battles } from './pages/Battles'
