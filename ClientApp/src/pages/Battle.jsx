@@ -1,8 +1,34 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import { useParams } from 'react-router'
 import { Link } from 'react-router-dom'
 import styles from '../styles/Battle.module.scss'
 
 export function Battle() {
+  const [battle, setBattle] = useState({
+    name: '',
+    conflict: '',
+    era: '',
+    date: '',
+    location: '',
+    combatants1: [],
+    combatants2: [],
+    outcome: '',
+    description: '',
+  })
+
+  const params = useParams()
+  const id = params.id
+
+  useEffect(() => {
+    async function getBattle() {
+      const response = await axios.get(`/api/battles/${id}`)
+      setBattle(response.data)
+    }
+
+    getBattle()
+  }, [id])
+
   return (
     <>
       <div className={styles.eras}>
@@ -11,7 +37,10 @@ export function Battle() {
         </header>
 
         <div className={styles.erasOptions}>
-          <h1>Battle of Hoth</h1>
+          <Link to="/">
+            <i className="fa fa-home"></i>
+          </Link>
+          <h1>{battle.name}</h1>
           <div className={styles.firstSection}>
             <div className={styles.imageDiv}>
               <img
@@ -24,22 +53,23 @@ export function Battle() {
             <div className={styles.battleInfo}>
               <div className={styles.insideBattleInfo}>
                 <p>
-                  <span>Conflict:</span> Galactic Civil War
+                  <span>Conflict:</span> {battle.conflict}
                 </p>
                 <p>
-                  <span>Era:</span> Classic
+                  <span>Era:</span> {battle.era}
                 </p>
                 <p>
-                  <span>Date:</span> 3 ABY
+                  <span>Date:</span> {battle.date}
                 </p>
                 <p>
-                  <span>Location:</span> Hoth
+                  <span>Location:</span> {battle.location}
                 </p>
                 <p>
-                  <span>Combatants:</span> Rebel Alliance vs Galactic Empire
+                  <span>Combatants:</span> {battle.combatants1} vs{' '}
+                  {battle.combatants2}
                 </p>
                 <p>
-                  <span>outcome:</span> Rebels successfully evacuate
+                  <span>outcome:</span> {battle.outcome}
                 </p>
               </div>
             </div>
@@ -47,16 +77,7 @@ export function Battle() {
           <div className={styles.secondSection}>
             <div className={styles.battleDescription}>
               <p>Description</p>
-              <p>
-                "What I remember about the rise of the Empire is… is how quiet
-                it was. During the waning hours of the Clone Wars, the 501st was
-                discreetly transferred back to Coruscant. It was a silent trip;
-                We all knew what was about to happen, what we were about to do.
-                Did we have any doubts? Any private traitorous thoughts?
-                Perhaps, but no one said a word. Not on the flight to Coruscant,
-                not when Order 66 came down, and not when we marched into the
-                Jedi Temple. Not a word."
-              </p>
+              <p>{battle.description}</p>
             </div>
 
             <div className={styles.battleImagesContainer}>

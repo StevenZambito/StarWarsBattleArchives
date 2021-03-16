@@ -5,17 +5,19 @@ import styles from '../styles/Battles.module.scss'
 
 function SingleBattleFromList(props) {
   return (
-    <div className={styles.battleImageContainer}>
-      <img
-        src="https://images-na.ssl-images-amazon.com/images/I/91MMkv35K5L._RI_.jpg"
-        alt="starwars"
-      />
-      <p>{props.name}</p>
-      <p>{props.date}</p>
-      <p>
-        {props.combatants1} vs {props.combatants2}
-      </p>
-    </div>
+    <Link to={`/battle/${props.id}`}>
+      <div className={styles.battleImageContainer}>
+        <img
+          src="https://images-na.ssl-images-amazon.com/images/I/91MMkv35K5L._RI_.jpg"
+          alt="starwars"
+        />
+        <p>{props.name}</p>
+        <p>{props.date}</p>
+        <p>
+          {props.combatants1} vs {props.combatants2}
+        </p>
+      </div>
+    </Link>
   )
 }
 
@@ -44,6 +46,9 @@ export function Battles() {
           <h1>Battles</h1>
         </header>
         <div className={styles.battlesOptionsBackground}>
+          <Link to="/">
+            <i className="fa fa-home"></i>
+          </Link>
           <h2>Prequel Era</h2>
 
           <div className={styles.searchWrapper}>
@@ -87,6 +92,7 @@ export function Battles() {
               return (
                 <SingleBattleFromList
                   key={battle.id}
+                  id={battle.id}
                   name={battle.name}
                   date={battle.date}
                   combatants1={battle.combatants1}
