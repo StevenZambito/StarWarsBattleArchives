@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router'
 import { Link } from 'react-router-dom'
+import format from 'date-fns/format'
 import styles from '../styles/Battle.module.scss'
 
 export function Battle() {
@@ -56,6 +57,8 @@ export function Battle() {
     const battlesResponse = await axios.get(`/api/battles/${id}`)
     setBattle(battlesResponse.data)
   }
+
+  const dateFormat = `MMMM do, yyyy 'at' h:mm aaa`
 
   return (
     <>
@@ -175,7 +178,11 @@ export function Battle() {
 
                   <div className={styles.theForm}>
                     <p className={styles.formInput}>{comment.body}</p>
-                    <p id={styles.commentDateTime}>{comment.createdAt}</p>
+                    <p id={styles.commentDateTime}>
+                      <time>
+                        {format(new Date(comment.createdAt), dateFormat)}
+                      </time>
+                    </p>
                   </div>
                 </div>
               ))}
