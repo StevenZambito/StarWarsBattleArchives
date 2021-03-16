@@ -167,7 +167,7 @@ export function Battle() {
 
             <div className={styles.commentSection}>
               {battle.comments.map((comment) => (
-                <div className={styles.myContainerThree}>
+                <div key={comment.id} className={styles.myContainerThree}>
                   <div className={styles.userImage}>
                     <img
                       src="https://static.wikia.nocookie.net/bfdbd325-0a25-419a-ba56-1dd2e41edcc6"
