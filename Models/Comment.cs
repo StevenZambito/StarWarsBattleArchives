@@ -8,5 +8,6 @@ namespace StarWarsBattleArchives.Models
         public string Body { get; set; }
         public DateTime CreatedAt { get; private set; } = DateTime.Now;
         public int BattleId { get; set; }
+        public int UserId { get; set; }
     }
 }

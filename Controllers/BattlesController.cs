@@ -2,9 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+// using Geocoding.Microsoft;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using StarWarsBattleArchives.Models;
 
 namespace StarWarsBattleArchives.Controllers
@@ -127,8 +131,11 @@ namespace StarWarsBattleArchives.Controllers
         // new values for the record.
         //
         [HttpPost]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<ActionResult<Battle>> PostBattle(Battle battle)
         {
+            // Set the UserID to the current user id, this overrides anything the user specifies.
+            battle.UserId = GetCurrentUserId();
             // Indicate to the database context we want to add this new record
             _context.Battles.Add(battle);
             await _context.SaveChangesAsync();
@@ -170,5 +177,13 @@ namespace StarWarsBattleArchives.Controllers
         {
             return _context.Battles.Any(battle => battle.Id == id);
         }
+
+        // Private helper method to get the JWT claim related to the user ID
+        private int GetCurrentUserId()
+        {
+            // Get the User Id from the claim and then parse it as an integer.
+            return int.Parse(User.Claims.FirstOrDefault(claim => claim.Type == "Id").Value);
+        }
+
     }
 }

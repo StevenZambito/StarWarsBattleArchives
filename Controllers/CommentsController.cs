@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -37,8 +39,12 @@ namespace StarWarsBattleArchives.Controllers
         // new values for the record.
         //
         [HttpPost]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<ActionResult<Comment>> PostComment(Comment comment)
         {
+
+            // Set the UserID to the current user id, this overrides anything the user specifies.
+            comment.UserId = GetCurrentUserId();
             // Indicate to the database context we want to add this new record
             _context.Comments.Add(comment);
             await _context.SaveChangesAsync();
@@ -46,6 +52,13 @@ namespace StarWarsBattleArchives.Controllers
             // Return a response that indicates the object was created (status code `201`) and some additional
             // headers with details of the newly created object.
             return CreatedAtAction("GetComment", new { id = comment.Id }, comment);
+        }
+
+        // Private helper method to get the JWT claim related to the user ID
+        private int GetCurrentUserId()
+        {
+            // Get the User Id from the claim and then parse it as an integer.
+            return int.Parse(User.Claims.FirstOrDefault(claim => claim.Type == "Id").Value);
         }
 
         // DELETE: api/Comments/5

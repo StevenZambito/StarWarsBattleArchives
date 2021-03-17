@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
+import { authHeader } from '../auth'
 import { Header } from '../components/Header'
 import styles from '../styles/CreateBattle.module.scss'
 
@@ -88,11 +89,18 @@ export function CreateBattle() {
   }
 
   const postBattle = async () => {
+    let config = {
+      headers: {
+        ...authHeader(),
+      },
+    }
     try {
-      await axios.post('/api/Battles', newBattle)
+      await axios.post('/api/Battles', newBattle, config)
       history.push('/')
     } catch (error) {
-      if (error.response.status === 400) {
+      if (error.response.status === 401) {
+        setErrorMessage('Not authorized')
+      } else if (error.response.status === 400) {
         window.alert('hello')
         const errorString = Object.values(error.response.data.errors).join(' ')
         console.log(errorString)

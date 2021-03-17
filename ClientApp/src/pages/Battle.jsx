@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { authHeader } from '../auth'
 import { useParams } from 'react-router'
 import { Link } from 'react-router-dom'
 import { Header } from '../components/Header'
@@ -48,8 +49,18 @@ export function Battle() {
   async function handleNewCommentSubmit(event) {
     event.preventDefault()
 
-    const response = await axios.post(`/api/Comments`, newComment)
+    let config = {
+      headers: {
+        ...authHeader(),
+      },
+    }
+
+    const response = await axios.post(`/api/Comments`, newComment, config)
     setNewComment(response.data)
+
+    // if (error.response.status === 401) {
+    //   setErrorMessage('Not authorized')
+    // }
 
     setNewComment({
       ...newComment,
