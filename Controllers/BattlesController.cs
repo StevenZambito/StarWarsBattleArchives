@@ -57,7 +57,10 @@ namespace StarWarsBattleArchives.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Battle>> GetBattle(int id)
         {
-            var battle = await _context.Battles.Include(battle => battle.Comments).Where(battle => battle.Id == id).FirstOrDefaultAsync();
+            var battle = await _context.Battles.
+            Include(battle => battle.Comments).
+            ThenInclude(comment => comment.User).
+            Where(battle => battle.Id == id).FirstOrDefaultAsync();
 
             // If we didn't find anything, we receive a `null` in return
             if (battle == null)

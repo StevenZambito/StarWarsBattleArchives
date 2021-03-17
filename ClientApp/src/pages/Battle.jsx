@@ -185,7 +185,7 @@ export function Battle() {
                     src="https://static.wikia.nocookie.net/bfdbd325-0a25-419a-ba56-1dd2e41edcc6"
                     alt="user profile"
                   />
-                  <p>Darth Vader</p>
+                  <p>{comment.user.fullName}</p>
                 </div>
 
                 <div className={styles.theForm}>
