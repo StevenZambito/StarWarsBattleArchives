@@ -19,6 +19,7 @@ export function Battle() {
     combatants2: [],
     outcome: '',
     description: '',
+    photoURL: '',
     comments: [],
   })
 
@@ -83,11 +84,13 @@ export function Battle() {
         <h1>{battle.name}</h1>
         <div className={styles.firstSection}>
           <div className={styles.imageDiv}>
-            <img
-              src="https://cdn.vox-cdn.com/thumbor/xHRHrhMm4WPfQ5OzTXE1kXz0BjI=/0x0:815x543/1200x800/filters:focal(0x0:815x543)/cdn.vox-cdn.com/assets/3715177/atat.jpg"
-              alt="hoth"
-              className={styles.battleImage}
-            />
+            {battle.photoURL && (
+              <img
+                alt="Star Wars battle"
+                src={battle.photoURL}
+                className={styles.battleImage}
+              />
+            )}
           </div>
 
           <div className={styles.battleInfo}>

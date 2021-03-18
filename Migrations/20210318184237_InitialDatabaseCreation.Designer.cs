@@ -11,8 +11,8 @@ using StarWarsBattleArchives.Models;
 namespace StarWarsBattleArchives.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20210316151932_CreateUserModel")]
-    partial class CreateUserModel
+    [Migration("20210318184237_InitialDatabaseCreation")]
+    partial class InitialDatabaseCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -63,6 +63,12 @@ namespace StarWarsBattleArchives.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("PhotoURL")
+                        .HasColumnType("text");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.ToTable("Battles");
@@ -84,9 +90,14 @@ namespace StarWarsBattleArchives.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp without time zone");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.HasIndex("BattleId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Comments");
                 });
@@ -111,6 +122,9 @@ namespace StarWarsBattleArchives.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Email")
+                        .IsUnique();
+
                     b.ToTable("Users");
                 });
 
@@ -121,6 +135,14 @@ namespace StarWarsBattleArchives.Migrations
                         .HasForeignKey("BattleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("StarWarsBattleArchives.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("StarWarsBattleArchives.Models.Battle", b =>

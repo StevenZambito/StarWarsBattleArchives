@@ -8,10 +8,11 @@ function SingleBattleFromList(props) {
   return (
     <Link to={`/battle/${props.id}`}>
       <div className={styles.battleImageContainer}>
-        <img
+        {/* <img
           src="https://images-na.ssl-images-amazon.com/images/I/91MMkv35K5L._RI_.jpg"
           alt="starwars"
-        />
+        /> */}
+        {props.photoURL && <img alt="Star Wars battle" src={props.photoURL} />}
         <p>{props.name}</p>
         <p>{props.date}</p>
         <p>
@@ -96,6 +97,7 @@ export function Battles() {
                   date={battle.date}
                   combatants1={battle.combatants1}
                   combatants2={battle.combatants2}
+                  photoURL={battle.photoURL}
                 />
               )
             })}

@@ -61,6 +61,9 @@ namespace StarWarsBattleArchives.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("PhotoURL")
+                        .HasColumnType("text");
+
                     b.Property<int>("UserId")
                         .HasColumnType("integer");
 
@@ -91,6 +94,8 @@ namespace StarWarsBattleArchives.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("BattleId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Comments");
                 });
@@ -128,6 +133,14 @@ namespace StarWarsBattleArchives.Migrations
                         .HasForeignKey("BattleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("StarWarsBattleArchives.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("StarWarsBattleArchives.Models.Battle", b =>

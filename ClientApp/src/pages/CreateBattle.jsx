@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { authHeader } from '../auth'
+import { useDropzone } from 'react-dropzone'
 import { Header } from '../components/Header'
 import styles from '../styles/CreateBattle.module.scss'
 
@@ -9,6 +10,8 @@ export function CreateBattle() {
   const [combatant1, setCombatant1] = useState('')
 
   const [combatant2, setCombatant2] = useState('')
+
+  const [isUploading, setIsUploading] = useState(false)
 
   const [newBattle, setNewBattle] = useState({
     name: '',
@@ -20,6 +23,7 @@ export function CreateBattle() {
     combatants2: [],
     outcome: '',
     description: '',
+    photoURL: '',
   })
 
   const [errorMessage, setErrorMessage] = useState('')
@@ -113,6 +117,58 @@ export function CreateBattle() {
     event.preventDefault()
 
     postBattle()
+  }
+
+  async function onDropFile(acceptedFiles) {
+    // Do something with the files
+    const fileToUpload = acceptedFiles[0]
+    console.log(fileToUpload)
+    // Create a formData object so we can send this
+    // to the API that is expecting som form data.
+    const formData = new FormData()
+    // Append a field that is the form upload itself
+    formData.append('file', fileToUpload)
+
+    setIsUploading(true)
+    try {
+      // Use fetch to send an authorization header and
+      // a body containing the form data with the file
+      const response = await fetch('/api/Uploads', {
+        method: 'POST',
+        headers: {
+          ...authHeader(),
+        },
+        body: formData,
+      })
+      // If we receive a 200 OK response, set the
+      // URL of the photo in our state so that it is
+      // sent along when creating the restaurant,
+      // otherwise show an error
+      if (response.status === 200) {
+        const apiResponse = await response.json()
+        const url = apiResponse.url
+        setNewBattle({ ...newBattle, photoURL: url })
+      } else {
+        setErrorMessage('Unable to upload image')
+      }
+    } catch {
+      // Catch any network errors and show the user we could not process their upload
+      setErrorMessage('Unable to upload image')
+    }
+    setIsUploading(false)
+  }
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop: onDropFile,
+  })
+  let dropZoneMessage = 'Drag a picture of the restaurant here to upload!'
+
+  if (isUploading) {
+    dropZoneMessage = 'Uploading...'
+  }
+
+  if (isDragActive) {
+    dropZoneMessage = 'Drop the files here ...'
   }
 
   return (
@@ -306,9 +362,21 @@ export function CreateBattle() {
               ></textarea>
             </div>
 
-            <div className={styles.formInput}>
-              <label htmlFor="picture">Picture</label>
-              <input type="file" name="picture" id="picture" />
+            {newBattle.photoURL && (
+              <p>
+                <img
+                  alt="Star Wars Battle"
+                  width={200}
+                  src={newBattle.photoURL}
+                />
+              </p>
+            )}
+
+            <div className={styles.fileDrop}>
+              <div {...getRootProps()}>
+                <input {...getInputProps()} />
+                {dropZoneMessage}
+              </div>
             </div>
             <div className={styles.formSubmit}>
               <input
