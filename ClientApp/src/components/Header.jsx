@@ -13,14 +13,20 @@ export function Header() {
   const user = getUser()
   return (
     <header>
-      <ul>
-        <li>
-          <nav>
-            {isLoggedIn() && (
+      <nav className={styles.headerContainer}>
+        {/* {isLoggedIn() && (
               <Link to="/new">
-                <i className="fa fa-plus"></i> Battle
+                <i className="fa fa-plus"></i> Battles
               </Link>
-            )}
+            )} */}
+        <div className={styles.battleHeaderTest}>
+          <Link to="/" className={styles.battlesHeader}>
+            Battle Archives
+          </Link>
+        </div>
+        <div className={styles.linksContainer}>
+          <div className={styles.theLinks}>
+            {isLoggedIn() && <p>Welcome back, {user.fullName}!</p>}
             {isLoggedIn() || <Link to="/signin">Sign in</Link>}
             {isLoggedIn() || <Link to="/signup">Sign up</Link>}
             {isLoggedIn() && (
@@ -28,20 +34,18 @@ export function Header() {
                 Sign out
               </span>
             )}
-            {isLoggedIn() && <p>Welcome back, {user.fullName}!</p>}
-          </nav>
-        </li>
-        {isLoggedIn() && (
-          <li className={styles.avatar}>
+          </div>
+
+          {isLoggedIn() && (
             <img
               src="https://cdn.vox-cdn.com/thumbor/xHRHrhMm4WPfQ5OzTXE1kXz0BjI=/0x0:815x543/1200x800/filters:focal(0x0:815x543)/cdn.vox-cdn.com/assets/3715177/atat.jpg"
               alt={`${user.fullName} Avatar`}
               height="64"
               width="64"
             />
-          </li>
-        )}
-      </ul>
+          )}
+        </div>
+      </nav>
     </header>
   )
 }
