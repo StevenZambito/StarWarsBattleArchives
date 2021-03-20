@@ -155,6 +155,7 @@ namespace StarWarsBattleArchives.Controllers
         // to grab the id from the URL. It is then made available to us as the `id` argument to the method.
         //
         [HttpDelete("{id}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> DeleteBattle(int id)
         {
             // Find this battle by looking for the specific id
@@ -163,6 +164,19 @@ namespace StarWarsBattleArchives.Controllers
             {
                 // There wasn't a battle with that id so return a `404` not found
                 return NotFound();
+            }
+
+            if (battle.UserId != GetCurrentUserId())
+            {
+               // Make a custom error response
+            var response = new
+              {
+                status = 401,
+                errors = new List<string>() { "Not Authorized" }
+              };
+
+                // Return our error with the custom response
+                return Unauthorized(response);
             }
 
             // Tell the database we want to remove this record

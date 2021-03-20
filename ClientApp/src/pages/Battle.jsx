@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { authHeader } from '../auth'
+import { authHeader, getUser, getUserId, isLoggedIn } from '../auth'
 import { useParams } from 'react-router'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { Header } from '../components/Header'
-import { isLoggedIn } from '../auth'
 import format from 'date-fns/format'
 import styles from '../styles/Battle.module.scss'
 
 export function Battle() {
+  const history = useHistory()
+
   const [battle, setBattle] = useState({
     name: '',
     conflict: '',
@@ -73,6 +74,19 @@ export function Battle() {
   }
 
   const dateFormat = `MMMM do, yyyy 'at' h:mm aaa`
+
+  async function handleDelete(event) {
+    event.preventDefault()
+
+    const response = await fetch(`/api/Restaurants/${id}`, {
+      method: 'DELETE',
+      headers: { 'content-type': 'application/json', ...authHeader() },
+    })
+
+    if (response.status === 200 || response.status === 204) {
+      history.push('/')
+    }
+  }
 
   return (
     <div className={styles.eras}>
@@ -143,7 +157,9 @@ export function Battle() {
           </div>
           <div>
             <button>Update</button>
-            <button>Delete</button>
+            {battle.userId === getUserId() && (
+              <button onClick={handleDelete}>Delete</button>
+            )}
             <h2>Comments</h2>
           </div>
 
