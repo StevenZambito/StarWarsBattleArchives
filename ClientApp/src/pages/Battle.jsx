@@ -34,7 +34,7 @@ export function Battle() {
 
   useEffect(() => {
     async function getBattle() {
-      const response = await axios.get(`/api/battles/${id}`)
+      const response = await axios.get(`/api/Battles/${id}`)
       setBattle(response.data)
     }
 
@@ -69,7 +69,7 @@ export function Battle() {
       body: '',
     })
 
-    const battlesResponse = await axios.get(`/api/battles/${id}`)
+    const battlesResponse = await axios.get(`/api/Battles/${id}`)
     setBattle(battlesResponse.data)
   }
 
@@ -78,7 +78,7 @@ export function Battle() {
   async function handleDelete(event) {
     event.preventDefault()
 
-    const response = await fetch(`/api/Restaurants/${id}`, {
+    const response = await fetch(`/api/Battles/${id}`, {
       method: 'DELETE',
       headers: { 'content-type': 'application/json', ...authHeader() },
     })
@@ -86,6 +86,18 @@ export function Battle() {
     if (response.status === 200 || response.status === 204) {
       history.push('/')
     }
+  }
+
+  async function handleDeleteComment(event, battleId) {
+    event.preventDefault()
+
+    await fetch(`/api/Comments/${battleId}`, {
+      method: 'DELETE',
+      headers: { 'content-type': 'application/json', ...authHeader() },
+    })
+
+    const response = await axios.get(`/api/Battles/${id}`)
+    setBattle(response.data)
   }
 
   return (
@@ -214,6 +226,18 @@ export function Battle() {
                       {format(new Date(comment.createdAt), dateFormat)}
                     </time>
                   </p>
+                  {battle.user.id === getUserId() && (
+                    <div>
+                      <button
+                        className="small"
+                        onClick={(event) =>
+                          handleDeleteComment(event, battle.id)
+                        }
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
