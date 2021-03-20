@@ -6,6 +6,7 @@ import { Eras } from './pages/Eras'
 import { Battle } from './pages/Battle'
 import { Battles } from './pages/Battles'
 import { CreateBattle } from './pages/CreateBattle'
+import { UpdateBattle } from './pages/UpdateBattle'
 import { Route, Switch } from 'react-router-dom'
 
 export function App() {
@@ -29,6 +30,9 @@ export function App() {
         </Route>
         <Route exact path="/signin">
           <SignIn />
+        </Route>
+        <Route exact path="/battles/:id/update">
+          <UpdateBattle />
         </Route>
         <Route path="*">
           <p>Not Found</p>

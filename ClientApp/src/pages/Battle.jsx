@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { authHeader, getUser, getUserId, isLoggedIn } from '../auth'
+import { authHeader, getUserId, isLoggedIn } from '../auth'
 import { useParams } from 'react-router'
 import { Link, useHistory } from 'react-router-dom'
 import { Header } from '../components/Header'
@@ -168,7 +168,13 @@ export function Battle() {
             </div>
           </div>
           <div>
-            <button>Update</button>
+            {battle.userId === getUserId() && (
+              <button>
+                <Link className="button" to={`/Battles/${id}/update`}>
+                  Edit
+                </Link>
+              </button>
+            )}
             {battle.userId === getUserId() && (
               <button onClick={handleDelete}>Delete</button>
             )}

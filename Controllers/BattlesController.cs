@@ -85,6 +85,7 @@ namespace StarWarsBattleArchives.Controllers
         // new values for the record.
         //
         [HttpPut("{id}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> PutBattle(int id, Battle battle)
         {
             // If the ID in the URL does not match the ID in the supplied request body, return a bad request
@@ -92,7 +93,20 @@ namespace StarWarsBattleArchives.Controllers
             {
                 return BadRequest();
             }
+            // Find this restaurant by looking for the specific id
+            var battleBelongsToUser = await _context.Battles.AnyAsync(battle => battle.Id == id && battle.UserId == GetCurrentUserId());
+            if (!battleBelongsToUser)
+            {
+                // Make a custom error response
+                var response = new
+                {
+                    status = 401,
+                    errors = new List<string>() { "Not Authorized" }
+                };
 
+                // Return our error with the custom response
+                return Unauthorized(response);
+            }
             // Tell the database to consider everything in battle to be _updated_ values. When
             // the save happens the database will _replace_ the values in the database with the ones from battle
             _context.Entry(battle).State = EntityState.Modified;
