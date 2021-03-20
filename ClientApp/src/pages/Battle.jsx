@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { authHeader, getUserId, isLoggedIn } from '../auth'
+import { authHeader, getUserId, isLoggedIn, getUser } from '../auth'
 import { useParams } from 'react-router'
 import { Link, useHistory } from 'react-router-dom'
 import { Header } from '../components/Header'
@@ -26,6 +26,7 @@ export function Battle() {
 
   const params = useParams()
   const id = Number(params.id)
+  const user = getUser()
 
   const [newComment, setNewComment] = useState({
     body: '',
@@ -184,10 +185,9 @@ export function Battle() {
           {isLoggedIn() && (
             <div className={styles.myContainer}>
               <div className={styles.userImage}>
-                <img
-                  src="https://static.wikia.nocookie.net/bfdbd325-0a25-419a-ba56-1dd2e41edcc6"
-                  alt="user profile"
-                />
+                {isLoggedIn() && user.photoURL && (
+                  <img src={user.photoURL} alt={`${user.fullName}'s Avatar`} />
+                )}
               </div>
               {/* <div className={styles.newCommentContainer}> */}
               <form className={styles.theForm}>
@@ -218,10 +218,12 @@ export function Battle() {
             {battle.comments.map((comment) => (
               <div key={comment.id} className={styles.myContainerThree}>
                 <div className={styles.userImage}>
-                  <img
-                    src="https://static.wikia.nocookie.net/bfdbd325-0a25-419a-ba56-1dd2e41edcc6"
-                    alt="user profile"
-                  />
+                  {isLoggedIn() && user.photoURL && (
+                    <img
+                      src={user.photoURL}
+                      alt={`${user.fullName}'s Avatar`}
+                    />
+                  )}
                   <p>{comment.user.fullName}</p>
                 </div>
 

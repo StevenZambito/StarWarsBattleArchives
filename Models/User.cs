@@ -39,6 +39,8 @@ namespace StarWarsBattleArchives.Models
             // Return True if the verification was a success
             return passwordVerification == PasswordVerificationResult.Success;
         }
+
+        public string PhotoURL { get; set; }
     }
 }
     

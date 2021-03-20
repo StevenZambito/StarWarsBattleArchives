@@ -50,7 +50,6 @@ namespace StarWarsBattleArchives.Controllers
         // new values for the record.
         //
         [HttpPost]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [RequestSizeLimit(10_000_000)]
         public async System.Threading.Tasks.Task<ActionResult> UploadAsync(IFormFile file)
         {

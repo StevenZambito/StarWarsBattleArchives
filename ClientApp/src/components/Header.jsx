@@ -35,11 +35,10 @@ export function Header() {
               </span>
             )}
           </div>
-
-          {isLoggedIn() && (
+          {isLoggedIn() && user.photoURL && (
             <img
-              src="https://cdn.vox-cdn.com/thumbor/xHRHrhMm4WPfQ5OzTXE1kXz0BjI=/0x0:815x543/1200x800/filters:focal(0x0:815x543)/cdn.vox-cdn.com/assets/3715177/atat.jpg"
-              alt={`${user.fullName} Avatar`}
+              src={user.photoURL}
+              alt={`${user.fullName}'s Avatar`}
               height="64"
               width="64"
             />
