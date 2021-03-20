@@ -88,10 +88,10 @@ export function Battle() {
     }
   }
 
-  async function handleDeleteComment(event, battleId) {
+  async function handleDeleteComment(event, commentId) {
     event.preventDefault()
 
-    await fetch(`/api/Comments/${battleId}`, {
+    await fetch(`/api/Comments/${commentId}`, {
       method: 'DELETE',
       headers: { 'content-type': 'application/json', ...authHeader() },
     })
@@ -226,12 +226,12 @@ export function Battle() {
                       {format(new Date(comment.createdAt), dateFormat)}
                     </time>
                   </p>
-                  {battle.user.id === getUserId() && (
+                  {comment.user.id === getUserId() && (
                     <div>
                       <button
                         className="small"
                         onClick={(event) =>
-                          handleDeleteComment(event, battle.id)
+                          handleDeleteComment(event, comment.id)
                         }
                       >
                         Delete
