@@ -1,6 +1,7 @@
 .battles {
   display: flex;
   flex-direction: column;
+  padding: 0rem 3rem 0rem 3rem;
   min-height: 100vh;
   background-image: url('https://starwarsblog.starwars.com/wp-content/uploads/2020/04/star-wars-backgrounds-25.jpg');
 }
@@ -22,6 +23,13 @@
   margin: 2rem 1rem 2rem 1rem;
   padding: 1rem 0rem 2rem 0rem;
   background-color: rgba(69, 177, 240, 0.8);
+}
+
+.blah {
+  // border: solid green;
+  display: flex;
+  width: 100%;
+  padding-left: 2rem;
 }
 
 .battlesOptionsBackground {
@@ -94,6 +102,11 @@
   p {
     text-align: center;
   }
+  link {
+    text-decoration: none;
+    color: red;
+    border: none;
+  }
 }
 
 .createBattle {
@@ -102,8 +115,8 @@
   align-items: center;
   background-color: silver;
   margin: 2rem 0.5rem 0.5rem 0.5rem;
-  width: 285px;
-  height: 144px;
+  width: 290px;
+  height: 150px;
   color: white;
   cursor: pointer;
   border: 0;
@@ -137,8 +150,8 @@
     object-fit: cover;
   }
 
-  img:hover {
-    border: solid red;
+  p {
+    color: black;
   }
 }
 

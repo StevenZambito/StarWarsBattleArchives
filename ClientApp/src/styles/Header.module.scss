@@ -28,15 +28,19 @@
   }
 }
 
-.battleHeaderTest {
-  // border: solid orange;
-}
-
 .theLinks {
   // border: solid blue;
   display: flex;
   flex-direction: column;
-  align-items: end;
+  align-items: flex-end;
+}
+
+.navLink {
+  cursor: pointer;
+}
+
+.navLink:hover {
+  color: #ffe81f;
 }
 
 .battlesHeader {

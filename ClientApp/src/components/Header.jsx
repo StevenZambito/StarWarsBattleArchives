@@ -26,13 +26,21 @@ export function Header() {
         </div>
         <div className={styles.linksContainer}>
           <div className={styles.theLinks}>
-            {isLoggedIn() && <p>Welcome back, {user.fullName}!</p>}
-            {isLoggedIn() || <Link to="/signin">Sign in</Link>}
-            {isLoggedIn() || <Link to="/signup">Sign up</Link>}
+            {isLoggedIn() && <p>{user.fullName}</p>}
+            {isLoggedIn() || (
+              <Link to="/signin" className={styles.navLink}>
+                Sign in
+              </Link>
+            )}
+            {isLoggedIn() || (
+              <Link to="/signup" className={styles.navLink}>
+                Sign up
+              </Link>
+            )}
             {isLoggedIn() && (
-              <span className="link" onClick={handleLogout}>
+              <p className={styles.navLink} onClick={handleLogout}>
                 Sign out
-              </span>
+              </p>
             )}
           </div>
           {isLoggedIn() && user.photoURL && (

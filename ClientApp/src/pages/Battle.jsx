@@ -34,6 +34,7 @@ export function Battle() {
   })
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     async function getBattle() {
       const response = await axios.get(`/api/Battles/${id}`)
       setBattle(response.data)
@@ -101,15 +102,35 @@ export function Battle() {
     setBattle(response.data)
   }
 
+  const goBack = () => {
+    history.go(-1)
+  }
+
   return (
     <div className={styles.eras}>
       <Header />
       <div className={styles.erasOptions}>
-        <Link to="/">
-          <i className="fa fa-home"></i>
-        </Link>
+        <nav>
+          <Link to="/">
+            <i className="fa fa-home"></i>
+          </Link>
+          <span>
+            <button
+              className={styles.breadCrumbs}
+              type="button"
+              onClick={goBack}
+            >
+              Battles
+            </button>
+          </span>
+          <span>
+            <button className={styles.breadCrumbsCurrent}>{battle.name}</button>
+          </span>
+        </nav>
+
         <h1>{battle.name}</h1>
-        <div className={styles.firstSection}>
+
+        <section className={styles.theSection}>
           <div className={styles.imageDiv}>
             {battle.photoURL && (
               <img
@@ -120,55 +141,95 @@ export function Battle() {
             )}
           </div>
 
-          <div className={styles.battleInfo}>
-            <div className={styles.insideBattleInfo}>
-              <p>
-                <span>Conflict:</span> {battle.conflict}
-              </p>
-              <p>
-                <span>Era:</span> {battle.era}
-              </p>
-              <p>
-                <span>Date:</span> {battle.date}
-              </p>
-              <p>
-                <span>Location:</span> {battle.location}
-              </p>
-              <p>
-                <span>Combatants:</span> {battle.combatants1} vs{' '}
-                {battle.combatants2}
-              </p>
-              <p>
-                <span>outcome:</span> {battle.outcome}
-              </p>
+          {/* <div className={styles.battleInfo}>
+            <div className={styles.resultRow}>
+              <div className={styles.battleProperty}>
+                <p>Conflict</p>
+              </div>
+              <div className={styles.battleResult}>
+                <p>Clone Wars</p>
+              </div>
+            </div>
+            <div className={styles.resultRow}>
+              <div className={styles.battleProperty}>
+                <p>Era</p>
+              </div>
+              <div className={styles.battleResult}>
+                <p>Age of Rebellion</p>
+              </div>
+            </div>
+            <div className={styles.resultRow}>
+              <div className={styles.battleProperty}>
+                <p>Date</p>
+              </div>
+              <div className={styles.battleResult}>
+                <p>3 ABY</p>
+              </div>
+            </div>
+            <div className={styles.resultRow}>
+              <div className={styles.battleProperty}>
+                <p>Location</p>
+              </div>
+              <div className={styles.battleResult}>
+                <p>Geonosis</p>
+              </div>
+            </div>
+            <div className={styles.resultRow}>
+              <div className={styles.battleProperty}>
+                <p>outcome</p>
+              </div>
+              <div className={styles.battleResult}>
+                <p>{battle.outcome}</p>
+              </div>
+            </div>
+            <div className={styles.resultRow}>
+              <div className={styles.battleProperty}>
+                <p>Combatants</p>
+              </div>
+              <div className={styles.battleResultCombat}>
+                <div className={styles.com1}>{battle.combatants1}</div>
+
+                <div className={styles.com2}>{battle.combatants2}</div>
+              </div>
+            </div>
+          </div> */}
+        </section>
+        <div className={styles.battleDataContainerBackground}>
+          <div className={styles.battleDataContainer}>
+            <div>
+              <p>Conflict</p>
+              {battle.conflict}
+            </div>
+            <div>
+              <p>Era</p>
+              {battle.era}
+            </div>
+            <div>
+              <p>Date</p>
+              {battle.date}
+            </div>
+            <div>
+              <p>Location</p>
+              {battle.location}
+            </div>
+            <div className={styles.dataOutcome}>
+              <p>outcome</p>
+              {battle.outcome}
+            </div>
+            <div className={styles.dataCombatants}>
+              <p>Combatants</p>
+              <p id={styles.com1}>{battle.combatants1}</p>
+              <p id={styles.com2}>{battle.combatants2}</p>
             </div>
           </div>
         </div>
+
         <div className={styles.secondSection}>
           <div className={styles.battleDescription}>
-            <p>Description</p>
             <p>{battle.description}</p>
           </div>
 
-          <div className={styles.battleImagesContainer}>
-            <div className={styles.battleImagesShell}>
-              <img
-                src="https://starwarsblog.starwars.com/wp-content/uploads/sites/6/2015/05/battlefront-hoth.jpg"
-                alt="hoth"
-              />
-            </div>
-            <div className={styles.battleImagesShell}>
-              <img
-                src="https://www.blackfive.net/.a/6a00d8341bfadb53ef017ee8831bdc970d-pi"
-                alt="hoth"
-              />
-            </div>
-
-            <div className={styles.battleImagesShell}>
-              <img src="https://i.redd.it/6u181bpu27ay.jpg" alt="hoth" />
-            </div>
-          </div>
-          <div>
+          <div className={styles.deleteAndEditButtons}>
             {battle.userId === getUserId() && (
               <button>
                 <Link className="button" to={`/Battles/${id}/update`}>
@@ -179,8 +240,8 @@ export function Battle() {
             {battle.userId === getUserId() && (
               <button onClick={handleDelete}>Delete</button>
             )}
-            <h2>Comments</h2>
           </div>
+          <h2>Comments</h2>
 
           {isLoggedIn() && (
             <div className={styles.myContainer}>
@@ -224,6 +285,12 @@ export function Battle() {
                       alt={`${user.fullName}'s Avatar`}
                     />
                   )}
+                  {isLoggedIn() || (
+                    <img
+                      src="https://static.wikia.nocookie.net/bfdbd325-0a25-419a-ba56-1dd2e41edcc6"
+                      alt="user profile"
+                    />
+                  )}
                   <p>{comment.user.fullName}</p>
                 </div>
 
@@ -237,7 +304,6 @@ export function Battle() {
                   {comment.user.id === getUserId() && (
                     <div>
                       <button
-                        className="small"
                         onClick={(event) =>
                           handleDeleteComment(event, comment.id)
                         }

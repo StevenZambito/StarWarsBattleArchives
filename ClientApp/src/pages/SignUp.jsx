@@ -148,7 +148,7 @@ export function SignUp() {
               </p>
               {newUser.photoURL && (
                 <p>
-                  <img alt="User Photo" width={100} src={newUser.photoURL} />
+                  <img alt="User Profile" width={100} src={newUser.photoURL} />
                 </p>
               )}
               <div className="file-drop-zone">

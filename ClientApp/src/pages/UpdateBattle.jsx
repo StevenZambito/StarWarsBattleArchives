@@ -199,8 +199,7 @@ export function UpdateBattle() {
             <Link to="/">
               <i className="fa fa-home"></i>
             </Link>
-            <h2>Update a Battle</h2>
-            <button onClick={() => console.log(newBattle)}>heyyyyyyy</button>
+            <h2>update a Battle</h2>
           </nav>
 
           <form

@@ -15,9 +15,6 @@ function SingleBattleFromList(props) {
         {props.photoURL && <img alt="Star Wars battle" src={props.photoURL} />}
         <p>{props.name}</p>
         <p>{props.date}</p>
-        <p>
-          {props.combatants1} vs {props.combatants2}
-        </p>
       </div>
     </Link>
   )
@@ -46,9 +43,14 @@ export function Battles() {
       <div className={styles.battles}>
         <Header />
         <div className={styles.battlesOptionsBackground}>
-          <Link to="/">
-            <i className="fa fa-home"></i>
-          </Link>
+          <div className={styles.blah}>
+            <nav>
+              <Link to="/">
+                <i className="fa fa-home"></i>
+              </Link>
+            </nav>
+          </div>
+
           <h2>Prequel Era</h2>
 
           <div className={styles.searchWrapper}>
@@ -85,7 +87,6 @@ export function Battles() {
                 </div>
               </Link>
               <p>Create Battle</p>
-              <br></br>
               <br></br>
             </div>
             {battles.map((battle) => {

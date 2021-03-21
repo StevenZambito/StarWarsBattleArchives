@@ -14,6 +14,7 @@ export function Eras() {
               <Link to="/battles">
                 <img src="https://i.imgur.com/Xp0vjUa.jpg" alt="Era" />
               </Link>
+              <p>Rise of the Empire</p>
             </div>
             <div>
               <Link to="/battles">
@@ -22,6 +23,8 @@ export function Eras() {
                   alt="Era"
                 />
               </Link>
+
+              <p>Age of Rebellion</p>
             </div>
             <div>
               <Link to="/battles">
@@ -30,6 +33,8 @@ export function Eras() {
                   alt="Era"
                 />
               </Link>
+
+              <p>New Republic / The First order</p>
             </div>
           </div>
 
@@ -41,6 +46,8 @@ export function Eras() {
                   alt="Era"
                 />
               </Link>
+
+              <p>All</p>
             </div>
           </div>
         </div>

@@ -182,7 +182,6 @@ export function CreateBattle() {
               <i className="fa fa-home"></i>
             </Link>
             <h2>Add a Battle</h2>
-            <button onClick={() => console.log(newBattle)}>heyyyyyyy</button>
           </nav>
 
           <form
