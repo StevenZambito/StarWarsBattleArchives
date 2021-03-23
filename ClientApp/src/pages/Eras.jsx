@@ -9,9 +9,9 @@ import NewRepublicAndTheFirstOrder from '../images/NewRepublicAndTheFirstOrder.j
 export function Eras() {
   return (
     <>
-      <div className={styles.eras}>
+      <div className={styles.erasPage}>
         <Header />
-        <div className={styles.erasOptions}>
+        <main className={styles.erasPageContent}>
           <div className={styles.erasOptionsContainer}>
             <div>
               <Link to="/battles">
@@ -32,12 +32,8 @@ export function Eras() {
                   alt="New Republic / The First Order"
                 />
               </Link>
-
               <p>New Republic / The First order</p>
             </div>
-          </div>
-
-          <div className={styles.erasAllContainer}>
             <div>
               <Link to="/battles">
                 <img
@@ -49,7 +45,7 @@ export function Eras() {
               <p>All</p>
             </div>
           </div>
-        </div>
+        </main>
       </div>
     </>
   )

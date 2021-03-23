@@ -1,28 +1,22 @@
-.eras {
+.erasPage {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   padding: 0rem 3rem 0rem 3rem;
   background-image: url(../images/SpaceBackground.jpg);
-  // background-image: url('https://starwarsblog.starwars.com/wp-content/uploads/2020/04/star-wars-backgrounds-25.jpg');
-  // background-position: center;
-  // background-repeat: no-repeat;
-  // background-size: cover;
 }
 
-.erasOptions {
+.erasPageContent {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex: 1;
   border: solid silver;
   margin: 2rem 1rem 2rem 1rem;
-  padding: 1rem 1rem 2rem 1rem;
   background-color: rgba(69, 177, 240, 0.9);
 }
 
-.erasOptions p {
+.erasPageContent p {
   margin-top: 0.4rem;
   font-size: 1.1rem;
   text-shadow: 1px 0 0 rgb(221, 221, 221), 0 -1px 0 rgb(221, 221, 221),
@@ -34,58 +28,32 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  div {
-    background-size: cover;
-    margin: 1rem;
-    transition: transform 0.5s ease;
-    height: 190px;
-    img {
-      // width: 325px;
-      // height: 180px;
-      max-width: 100%;
-      max-height: 100%;
+  margin: 0.4rem;
 
+  div {
+    margin-left: 0.8rem;
+    margin-right: 0.8rem;
+    transition: transform 0.5s ease;
+    height: 260px;
+    width: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 340px;
+      height: 200px;
       border: solid silver;
     }
+
     p {
       text-align: center;
     }
   }
+
   div:hover {
     filter: brightness(100%);
     transform: scale(1.09);
   }
-}
-
-.erasAllContainer {
-  margin-top: 1rem;
-  div {
-    background-size: cover;
-    margin: 1rem;
-    transition: transform 0.5s ease;
-    height: 190px;
-    img {
-      max-width: 100%;
-      max-height: 100%;
-      // width: 350px;
-      // height: 200px;
-      border: solid silver;
-    }
-    p {
-      text-align: center;
-    }
-  }
-  div:hover {
-    filter: brightness(100%);
-    transform: scale(1.09);
-  }
-}
-
-.text {
-  position: static;
-}
-
-.erasAllContainer {
-  display: flex;
-  justify-content: center;
 }

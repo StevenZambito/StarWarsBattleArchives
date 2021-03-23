@@ -47,22 +47,16 @@ export function SignUp() {
   }
 
   async function onDropFile(acceptedFiles) {
-    // Do something with the files
     const fileToUpload = acceptedFiles[0]
     console.log(fileToUpload)
 
-    // Create a formData object so we can send this
-    // to the API that is expecting som form data.
     const formData = new FormData()
 
-    // Append a field that is the form upload itself
     formData.append('file', fileToUpload)
 
     try {
       setIsUploading(true)
 
-      // Use fetch to send an authorization header and
-      // a body containing the form data with the file
       const response = await fetch('/api/Uploads', {
         method: 'POST',
         headers: {
@@ -73,10 +67,6 @@ export function SignUp() {
 
       setIsUploading(false)
 
-      // If we receive a 200 OK response, set the
-      // URL of the photo in our state so that it is
-      // sent along when creating the user,
-      // otherwise show an error
       if (response.status === 200) {
         const apiResponse = await response.json()
 
@@ -84,20 +74,19 @@ export function SignUp() {
 
         setNewUser({ ...newUser, photoURL: url })
       } else {
-        setErrorMessage('Unable to upload image')
+        setErrorMessage('unable to upload image')
       }
     } catch (error) {
-      // Catch any network errors and show the user we could not process their upload
       console.debug(error)
-      setErrorMessage('Unable to upload image')
+      setErrorMessage('unable to upload image')
       setIsUploading(false)
     }
   }
 
-  let dropZoneMessage = 'Drag a picture of the user here to upload!'
+  let dropZoneMessage = 'Drag a profile picture here to upload!'
 
   if (isUploading) {
-    dropZoneMessage = 'Uploading...'
+    dropZoneMessage = 'uploading...'
   }
 
   if (isDragActive) {
@@ -147,11 +136,11 @@ export function SignUp() {
                 />
               </p>
               {newUser.photoURL && (
-                <p>
+                <p id={styles.uploadedImage}>
                   <img alt="User Profile" width={100} src={newUser.photoURL} />
                 </p>
               )}
-              <div className="file-drop-zone">
+              <div className={styles.fileDropZone}>
                 <div {...getRootProps()}>
                   <input {...getInputProps()} />
                   {dropZoneMessage}

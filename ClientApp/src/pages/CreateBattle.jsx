@@ -121,7 +121,6 @@ export function CreateBattle() {
   async function onDropFile(acceptedFiles) {
     const fileToUpload = acceptedFiles[0]
     console.log(fileToUpload)
-
     const formData = new FormData()
 
     formData.append('file', fileToUpload)
@@ -167,7 +166,7 @@ export function CreateBattle() {
       <div className={styles.createBattle}>
         <Header />
 
-        <div className={styles.createBattleContainer}>
+        <main className={styles.createBattleContainer}>
           <nav>
             <Link to="/">
               <i className="fa fa-home"></i>
@@ -177,6 +176,7 @@ export function CreateBattle() {
 
           <form onSubmit={(event) => handleSubmit(event)}>
             <p>{errorMessage}</p>
+
             <div className={styles.formInput}>
               <label htmlFor="name">Name</label>
               <input
@@ -188,6 +188,7 @@ export function CreateBattle() {
                 onChange={(event) => updateBattle(event)}
               />
             </div>
+
             <div className={styles.formInput}>
               <label htmlFor="conflict">Conflict</label>
               <input
@@ -199,8 +200,10 @@ export function CreateBattle() {
                 placeholder="ex: Clone Wars, Galactic Civil War, etc."
               />
             </div>
+
             <div className={styles.formInput}>
               <p>Which era did the battle take place in?</p>
+
               <div>
                 <input
                   type="radio"
@@ -212,6 +215,7 @@ export function CreateBattle() {
                 />
                 <label htmlFor="riseOfTheEmpire">Rise of the Empire</label>
               </div>
+
               <div>
                 <input
                   type="radio"
@@ -223,6 +227,7 @@ export function CreateBattle() {
                 />
                 <label htmlFor="ageOfRebellion">Age of Rebellion</label>
               </div>
+
               <div>
                 <input
                   type="radio"
@@ -249,6 +254,7 @@ export function CreateBattle() {
                 onChange={(event) => updateBattle(event)}
               />
             </div>
+
             <div className={styles.formInput}>
               <label htmlFor="location">Location</label>
               <input
@@ -259,6 +265,7 @@ export function CreateBattle() {
                 value={newBattle.location}
               />
             </div>
+
             <div className={styles.formInput}>
               <label htmlFor="combatants1">Combatants 1</label>
               <div className={styles.combatantsContainer}>
@@ -287,14 +294,14 @@ export function CreateBattle() {
               <button
                 type="button"
                 onClick={(event) => addCombatant1ToList(event)}
-                className={styles.addCombatantsButton}
               >
                 Add
               </button>
             </div>
-            {/* <p id={styles.vs}>vs</p> */}
+
             <div className={styles.formInput}>
               <label htmlFor="combatants2">Combatants 2</label>
+
               <div className={styles.combatantsContainer}>
                 {newBattle.combatants2.map((combatant, index) => {
                   return (
@@ -318,10 +325,10 @@ export function CreateBattle() {
                 id="combatants2"
                 value={combatant2}
               />
+
               <button
                 type="button"
                 onClick={(event) => addCombatant2ToList(event)}
-                className={styles.addCombatantsButton}
               >
                 Add
               </button>
@@ -374,7 +381,7 @@ export function CreateBattle() {
               <span></span>
             </div>
           </form>
-        </div>
+        </main>
       </div>
     </>
   )
