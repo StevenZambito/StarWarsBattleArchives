@@ -35,17 +35,32 @@ namespace StarWarsBattleArchives.Controllers
         // Returns a list of all your Battles
         //
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Battle>>> GetBattles(string filter)
+        public async Task<ActionResult<IEnumerable<Battle>>> GetBattles(string filter, string era)
         {
-            if(filter == null) {
-            // Uses the database context in `_context` to request all of the Battles, sort
-            // them by row id and return them as a JSON array.
-                return await _context.Battles.OrderBy(row => row.Id).Include(battle => battle.Comments).ToListAsync();
-            } else {
-                return await _context.Battles.Where(battle => battle.Name.ToLower().Contains(filter.ToLower())).OrderBy(row => row.Id).Include(battle => battle.Comments).ToListAsync();
+            if(filter == null) 
+            {
+                if (era == "all") 
+                {
+                    return await _context.Battles.OrderBy(row => row.Id).Include(battle => battle.Comments).ToListAsync();
+                }
+                else 
+                {
+                    // Uses the database context in `_context` to request all of the Battles, sort
+                    // them by row id and return them as a JSON array.
+                    return await _context.Battles.Where(battle => battle.Era == era).OrderBy(row => row.Id).Include(battle => battle.Comments).ToListAsync();
+                }
             }
-            
-            
+            else 
+            {
+                if (era == "all")
+                {
+                    return await _context.Battles.Where(battle => battle.Name.ToLower().Contains(filter.ToLower())).OrderBy(row => row.Id).Include(battle => battle.Comments).ToListAsync();
+                }
+                else 
+                {
+                    return await _context.Battles.Where(battle => battle.Era == era).Where(battle => battle.Name.ToLower().Contains(filter.ToLower())).OrderBy(row => row.Id).Include(battle => battle.Comments).ToListAsync();
+                }
+            }
         }
 
         // GET: api/Battles/5

@@ -233,10 +233,8 @@ export function CreateBattle() {
                   type="radio"
                   name="era"
                   id="newRepublicAndRiseOfTheFirstOrder"
-                  value="New Republic / Rise of the First Order"
-                  checked={
-                    newBattle.era === 'New Republic / Rise of the First Order'
-                  }
+                  value="New Republic The First Order"
+                  checked={newBattle.era === 'New Republic The First Order'}
                   onChange={(event) => updateBattle(event)}
                 />
                 <label htmlFor="newRepublicAndRiseOfTheFirstOrder">

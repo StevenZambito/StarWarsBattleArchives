@@ -4,7 +4,6 @@
   min-height: 100vh;
   padding: 0rem 3rem 0rem 3rem;
   background-image: url(../images/SpaceBackground.jpg);
-  // background-image: url('https://starwarsblog.starwars.com/wp-content/uploads/2020/04/star-wars-backgrounds-25.jpg');
 }
 
 .createBattle header {
@@ -166,4 +165,10 @@
   background-color: darkorange;
   color: white;
   padding: 1rem;
+}
+
+@media screen and (max-width: 500px) {
+  .createBattle {
+    padding: 0;
+  }
 }

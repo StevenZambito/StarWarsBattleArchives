@@ -78,7 +78,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 300px;
+  // height: 300px;
 
   img {
     max-width: 100%;
@@ -215,7 +215,7 @@
 
 .commentSubmitContainer {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 
   input[type='submit'] {
     padding: 0.6rem;
@@ -247,14 +247,14 @@
   color: rgb(56, 57, 57);
 }
 
-// @media screen and (max-width: 800px) {
-//   .firstSection {
-//     flex-direction: column;
-//   }
-// }
+@media screen and (max-width: 500px) {
+  .battlePage {
+    padding: 0;
+  }
+}
 
-// @media screen and (max-width: 400px) {
-//   .erasOptions {
-//     padding: 0.5rem 1.5rem 1rem 1.5rem;
+// @media screen and (max-width: 500px) {
+//   .battleImageDiv {
+//     height: 0;
 //   }
 // }

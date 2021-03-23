@@ -98,6 +98,14 @@ export function Battle() {
     history.go(-1)
   }
 
+  const formatEra = (era) => {
+    if (era === 'New Republic The First Order') {
+      return 'New Republic / The First order'
+    }
+
+    return era
+  }
+
   return (
     <div className={styles.battlePage}>
       <Header />
@@ -140,7 +148,7 @@ export function Battle() {
 
             <div>
               <p>Era</p>
-              {battle.era}
+              {formatEra(battle.era)}
             </div>
 
             <div>

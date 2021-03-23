@@ -36,6 +36,7 @@ namespace StarWarsBattleArchives.Models
 
         public int UserId { get; set; }
 
+        [Required]
         public string PhotoURL { get; set; }
 
         public List<Comment> Comments { get; set; }

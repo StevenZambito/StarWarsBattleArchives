@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Header } from '../components/Header'
 import styles from '../styles/Battles.module.scss'
+import { useParams } from 'react-router'
 
 function SingleBattleFromList(props) {
   return (
@@ -19,19 +20,34 @@ function SingleBattleFromList(props) {
 export function Battles() {
   const [battles, setBattles] = useState([])
   const [filterText, setFilterText] = useState('')
+  const [nameOfEra, setNameOfEra] = useState('')
+
+  const params = useParams()
 
   useEffect(() => {
-    getBattles(filterText)
-  }, [filterText])
+    const getBattles = async (filterText) => {
+      let url = '/api/Battles'
 
-  const getBattles = async (filterText) => {
-    let url = '/api/Battles'
+      // if (filterText.length !== 0) {
+      //   url = `/api/Battles?filter=${filterText}`
+      // }
 
-    if (filterText.length !== 0) {
-      url = `/api/Battles?filter=${filterText}`
+      url = `/api/Battles?filter=${filterText}&era=${params.era}`
+      const response = await axios.get(url)
+      setBattles(response.data)
     }
-    const response = await axios.get(url)
-    setBattles(response.data)
+
+    setNameOfEra(params.era)
+
+    getBattles(filterText)
+  }, [params.era, filterText])
+
+  const formatEra = (era) => {
+    if (era === 'New Republic The First Order') {
+      return 'New Republic / The First order'
+    }
+
+    return era
   }
 
   return (
@@ -47,7 +63,7 @@ export function Battles() {
             </nav>
           </section>
 
-          <h2>Prequel Era</h2>
+          <h2>{formatEra(nameOfEra)}</h2>
 
           <section className={styles.searchContainer}>
             <div className={styles.search}>

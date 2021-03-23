@@ -16,7 +16,7 @@ export function App() {
         <Route exact path="/">
           <Eras />
         </Route>
-        <Route exact path="/battles">
+        <Route exact path="/battles/:era">
           <Battles />
         </Route>
         <Route exact path="/battle/:id">
