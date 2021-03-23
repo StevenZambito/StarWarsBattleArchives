@@ -2,6 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Header } from '../components/Header'
 import styles from '../styles/Eras.module.scss'
+import RiseOfTheEmpire from '../images/RiseOfTheEmpire.jpg'
+import AgeOfRebellion from '../images/AgeOfRebellion.jpg'
+import NewRepublicAndTheFirstOrder from '../images/NewRepublicAndTheFirstOrder.jpg'
 
 export function Eras() {
   return (
@@ -12,25 +15,21 @@ export function Eras() {
           <div className={styles.erasOptionsContainer}>
             <div>
               <Link to="/battles">
-                <img src="https://i.imgur.com/Xp0vjUa.jpg" alt="Era" />
+                <img src={RiseOfTheEmpire} alt="Rise of the Empire" />
               </Link>
               <p>Rise of the Empire</p>
             </div>
             <div>
               <Link to="/battles">
-                <img
-                  src="https://milnersblog.files.wordpress.com/2019/04/star-wars-celebration-2019-official-full-mural-poster-hi-res.jpg"
-                  alt="Era"
-                />
+                <img src={AgeOfRebellion} alt="Age of Rebellion" />
               </Link>
-
               <p>Age of Rebellion</p>
             </div>
             <div>
               <Link to="/battles">
                 <img
-                  src="https://www.farfarawaynews.com/wp-content/uploads/2019/04/Celebration-Muraljpg.jpg"
-                  alt="Era"
+                  src={NewRepublicAndTheFirstOrder}
+                  alt="New Republic / The First Order"
                 />
               </Link>
 

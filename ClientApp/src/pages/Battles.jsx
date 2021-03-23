@@ -8,10 +8,6 @@ function SingleBattleFromList(props) {
   return (
     <Link to={`/battle/${props.id}`}>
       <div className={styles.battleImageContainer}>
-        {/* <img
-          src="https://images-na.ssl-images-amazon.com/images/I/91MMkv35K5L._RI_.jpg"
-          alt="starwars"
-        /> */}
         {props.photoURL && <img alt="Star Wars battle" src={props.photoURL} />}
         <p>{props.name}</p>
         <p>{props.date}</p>
@@ -40,20 +36,20 @@ export function Battles() {
 
   return (
     <>
-      <div className={styles.battles}>
+      <div className={styles.battlesPage}>
         <Header />
-        <div className={styles.battlesOptionsBackground}>
-          <div className={styles.blah}>
+        <main className={styles.battlesPageContent}>
+          <section className={styles.navContainer}>
             <nav>
               <Link to="/">
                 <i className="fa fa-home"></i>
               </Link>
             </nav>
-          </div>
+          </section>
 
           <h2>Prequel Era</h2>
 
-          <div className={styles.searchWrapper}>
+          <section className={styles.searchContainer}>
             <div className={styles.search}>
               <input
                 type="text"
@@ -64,31 +60,32 @@ export function Battles() {
                   setFilterText(event.target.value)
                 }}
               />
-              <button type="submit" className={styles.searchButton}>
+              <button type="submit" className={styles.searchGoButton}>
                 <i className="fa fa-search"></i>
               </button>
             </div>
-          </div>
+          </section>
 
-          <div className={styles.dropDownSort}>
+          <section className={styles.dropDownSort}>
             <p>Sort By:</p>
             <select>
               <option>Battle: A to Z</option>
               <option>Year</option>
               <option>Era</option>
             </select>
-          </div>
+          </section>
 
-          <div className={styles.battleOptionsContainer}>
-            <div>
+          <section className={styles.battlesOptionsContainer}>
+            <div className={styles.createBattleContainer}>
               <Link to="/create">
                 <div className={styles.createBattle}>
-                  <button className={styles.addButton}>+</button>
+                  <button className={styles.createPlusSymbol}>+</button>
                 </div>
               </Link>
               <p>Create Battle</p>
               <br></br>
             </div>
+
             {battles.map((battle) => {
               return (
                 <SingleBattleFromList
@@ -102,8 +99,8 @@ export function Battles() {
                 />
               )
             })}
-          </div>
-        </div>
+          </section>
+        </main>
       </div>
     </>
   )

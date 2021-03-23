@@ -27,7 +27,6 @@ export function Battle() {
   const params = useParams()
   const id = Number(params.id)
   const user = getUser()
-
   const [newComment, setNewComment] = useState({
     body: '',
     battleId: id,
@@ -39,14 +38,12 @@ export function Battle() {
       const response = await axios.get(`/api/Battles/${id}`)
       setBattle(response.data)
     }
-
     getBattle()
   }, [id])
 
   function handleNewCommentTextFieldChange(event) {
     const name = event.target.name
     const value = event.target.value
-
     setNewComment({ ...newComment, [name]: value })
   }
 
@@ -61,11 +58,6 @@ export function Battle() {
 
     const response = await axios.post(`/api/Comments`, newComment, config)
     setNewComment(response.data)
-
-    // if (error.response.status === 401) {
-    //   setErrorMessage('Not authorized')
-    // }
-
     setNewComment({
       ...newComment,
       body: '',
@@ -107,9 +99,10 @@ export function Battle() {
   }
 
   return (
-    <div className={styles.eras}>
+    <div className={styles.battlePage}>
       <Header />
-      <div className={styles.erasOptions}>
+
+      <main className={styles.battlePageContent}>
         <nav>
           <Link to="/">
             <i className="fa fa-home"></i>
@@ -130,127 +123,76 @@ export function Battle() {
 
         <h1>{battle.name}</h1>
 
-        <section className={styles.theSection}>
+        <section className={styles.uploadedImageContainer}>
           <div className={styles.imageDiv}>
             {battle.photoURL && (
-              <img
-                alt="Star Wars battle"
-                src={battle.photoURL}
-                className={styles.battleImage}
-              />
+              <img alt="Star Wars battle" src={battle.photoURL} />
             )}
           </div>
-
-          {/* <div className={styles.battleInfo}>
-            <div className={styles.resultRow}>
-              <div className={styles.battleProperty}>
-                <p>Conflict</p>
-              </div>
-              <div className={styles.battleResult}>
-                <p>Clone Wars</p>
-              </div>
-            </div>
-            <div className={styles.resultRow}>
-              <div className={styles.battleProperty}>
-                <p>Era</p>
-              </div>
-              <div className={styles.battleResult}>
-                <p>Age of Rebellion</p>
-              </div>
-            </div>
-            <div className={styles.resultRow}>
-              <div className={styles.battleProperty}>
-                <p>Date</p>
-              </div>
-              <div className={styles.battleResult}>
-                <p>3 ABY</p>
-              </div>
-            </div>
-            <div className={styles.resultRow}>
-              <div className={styles.battleProperty}>
-                <p>Location</p>
-              </div>
-              <div className={styles.battleResult}>
-                <p>Geonosis</p>
-              </div>
-            </div>
-            <div className={styles.resultRow}>
-              <div className={styles.battleProperty}>
-                <p>outcome</p>
-              </div>
-              <div className={styles.battleResult}>
-                <p>{battle.outcome}</p>
-              </div>
-            </div>
-            <div className={styles.resultRow}>
-              <div className={styles.battleProperty}>
-                <p>Combatants</p>
-              </div>
-              <div className={styles.battleResultCombat}>
-                <div className={styles.com1}>{battle.combatants1}</div>
-
-                <div className={styles.com2}>{battle.combatants2}</div>
-              </div>
-            </div>
-          </div> */}
         </section>
-        <div className={styles.battleDataContainerBackground}>
+
+        <section className={styles.battleDataContainerBackground}>
           <div className={styles.battleDataContainer}>
             <div>
               <p>Conflict</p>
               {battle.conflict}
             </div>
+
             <div>
               <p>Era</p>
               {battle.era}
             </div>
+
             <div>
               <p>Date</p>
               {battle.date}
             </div>
+
             <div>
               <p>Location</p>
               {battle.location}
             </div>
-            <div className={styles.dataOutcome}>
+
+            <div>
               <p>outcome</p>
               {battle.outcome}
             </div>
-            <div className={styles.dataCombatants}>
+
+            <div>
               <p>Combatants</p>
               <p id={styles.com1}>{battle.combatants1}</p>
               <p id={styles.com2}>{battle.combatants2}</p>
             </div>
           </div>
-        </div>
+        </section>
 
-        <div className={styles.secondSection}>
-          <div className={styles.battleDescription}>
+        <section className={styles.descriptionAndCommentsSection}>
+          <div className={styles.battleDescriptionContainer}>
+            <p id={styles.battleDescriptionHeading}>Description</p>
             <p>{battle.description}</p>
           </div>
 
           <div className={styles.deleteAndEditButtons}>
             {battle.userId === getUserId() && (
               <button>
-                <Link className="button" to={`/Battles/${id}/update`}>
-                  Edit
-                </Link>
+                <Link to={`/Battles/${id}/update`}>Edit</Link>
               </button>
             )}
             {battle.userId === getUserId() && (
               <button onClick={handleDelete}>Delete</button>
             )}
           </div>
+
           <h2>Comments</h2>
 
           {isLoggedIn() && (
-            <div className={styles.myContainer}>
+            <div className={styles.uploadCommentContainer}>
               <div className={styles.userImage}>
                 {isLoggedIn() && user.photoURL && (
                   <img src={user.photoURL} alt={`${user.fullName}'s Avatar`} />
                 )}
               </div>
-              {/* <div className={styles.newCommentContainer}> */}
+
               <form className={styles.theForm}>
                 <p className={styles.formInput}>
                   <label htmlFor="body"></label>
@@ -262,8 +204,8 @@ export function Battle() {
                   ></textarea>
                 </p>
               </form>
-              {/* </div> */}
-              <div className={styles.myContainerTwo}>
+
+              <div className={styles.commentSubmitContainer}>
                 <p>
                   <input
                     type="submit"
@@ -275,9 +217,9 @@ export function Battle() {
             </div>
           )}
 
-          <div className={styles.commentSection}>
+          <div className={styles.commentsContainer}>
             {battle.comments.map((comment) => (
-              <div key={comment.id} className={styles.myContainerThree}>
+              <div key={comment.id} className={styles.commentsWrapper}>
                 <div className={styles.userImage}>
                   {isLoggedIn() && user.photoURL && (
                     <img
@@ -316,8 +258,8 @@ export function Battle() {
               </div>
             ))}
           </div>
-        </div>
-      </div>
+        </section>
+      </main>
     </div>
   )
 }

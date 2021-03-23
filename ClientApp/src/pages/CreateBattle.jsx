@@ -8,7 +8,6 @@ import styles from '../styles/CreateBattle.module.scss'
 
 export function CreateBattle() {
   const [combatant1, setCombatant1] = useState('')
-
   const [combatant2, setCombatant2] = useState('')
 
   const [isUploading, setIsUploading] = useState(false)
@@ -33,7 +32,6 @@ export function CreateBattle() {
   const updateBattle = (event) => {
     const value = event.target.value
     const fieldName = event.target.name
-
     const updatedBattle = { ...newBattle, [fieldName]: value }
 
     setNewBattle(updatedBattle)
@@ -98,6 +96,7 @@ export function CreateBattle() {
         ...authHeader(),
       },
     }
+
     try {
       await axios.post('/api/Battles', newBattle, config)
       history.push('/')
@@ -120,19 +119,15 @@ export function CreateBattle() {
   }
 
   async function onDropFile(acceptedFiles) {
-    // Do something with the files
     const fileToUpload = acceptedFiles[0]
     console.log(fileToUpload)
-    // Create a formData object so we can send this
-    // to the API that is expecting som form data.
+
     const formData = new FormData()
-    // Append a field that is the form upload itself
+
     formData.append('file', fileToUpload)
 
     setIsUploading(true)
     try {
-      // Use fetch to send an authorization header and
-      // a body containing the form data with the file
       const response = await fetch('/api/Uploads', {
         method: 'POST',
         headers: {
@@ -140,10 +135,6 @@ export function CreateBattle() {
         },
         body: formData,
       })
-      // If we receive a 200 OK response, set the
-      // URL of the photo in our state so that it is
-      // sent along when creating the restaurant,
-      // otherwise show an error
       if (response.status === 200) {
         const apiResponse = await response.json()
         const url = apiResponse.url
@@ -152,7 +143,6 @@ export function CreateBattle() {
         setErrorMessage('Unable to upload image')
       }
     } catch {
-      // Catch any network errors and show the user we could not process their upload
       setErrorMessage('Unable to upload image')
     }
     setIsUploading(false)
@@ -161,10 +151,11 @@ export function CreateBattle() {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop: onDropFile,
   })
-  let dropZoneMessage = 'Drag a picture of the restaurant here to upload!'
+
+  let dropZoneMessage = 'Drag a picture of the battle here to upload!'
 
   if (isUploading) {
-    dropZoneMessage = 'Uploading...'
+    dropZoneMessage = 'uploading...'
   }
 
   if (isDragActive) {
@@ -184,10 +175,7 @@ export function CreateBattle() {
             <h2>Add a Battle</h2>
           </nav>
 
-          <form
-            onSubmit={(event) => handleSubmit(event)}
-            className={styles.formContainer}
-          >
+          <form onSubmit={(event) => handleSubmit(event)}>
             <p>{errorMessage}</p>
             <div className={styles.formInput}>
               <label htmlFor="name">Name</label>
@@ -276,7 +264,7 @@ export function CreateBattle() {
               <div className={styles.combatantsContainer}>
                 {newBattle.combatants1.map((combatant, index) => {
                   return (
-                    <div key={index} className={styles.theAddedCombatant}>
+                    <div key={index} className={styles.theAddedCombatant1}>
                       <p>{combatant}</p>
                       <span
                         className={styles.theX}
@@ -310,7 +298,7 @@ export function CreateBattle() {
               <div className={styles.combatantsContainer}>
                 {newBattle.combatants2.map((combatant, index) => {
                   return (
-                    <div key={index} className={styles.theAddedCombatant}>
+                    <div key={index} className={styles.theAddedCombatant2}>
                       <p>{combatant} </p>
                       <span
                         className={styles.theX}
@@ -362,13 +350,13 @@ export function CreateBattle() {
             </div>
 
             {newBattle.photoURL && (
-              <p>
+              <div className={styles.droppedImage}>
                 <img
                   alt="Star Wars Battle"
                   width={200}
                   src={newBattle.photoURL}
                 />
-              </p>
+              </div>
             )}
 
             <div className={styles.fileDrop}>

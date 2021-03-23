@@ -175,10 +175,10 @@ export function UpdateBattle() {
     onDrop: onDropFile,
   })
 
-  let dropZoneMessage = 'Drag a picture of the restaurant here to upload!'
+  let dropZoneMessage = 'Drag a picture of the battle here to upload!'
 
   if (isUploading) {
-    dropZoneMessage = 'Uploading...'
+    dropZoneMessage = 'uploading...'
   }
 
   if (isDragActive) {
@@ -294,7 +294,7 @@ export function UpdateBattle() {
               <div className={styles.combatantsContainer}>
                 {newBattle.combatants1.map((combatant, index) => {
                   return (
-                    <div key={index} className={styles.theAddedCombatant}>
+                    <div key={index} className={styles.theAddedCombatant1}>
                       <p>{combatant}</p>
                       <span
                         className={styles.theX}
@@ -328,7 +328,7 @@ export function UpdateBattle() {
               <div className={styles.combatantsContainer}>
                 {newBattle.combatants2.map((combatant, index) => {
                   return (
-                    <div key={index} className={styles.theAddedCombatant}>
+                    <div key={index} className={styles.theAddedCombatant2}>
                       <p>{combatant} </p>
                       <span
                         className={styles.theX}
@@ -380,13 +380,13 @@ export function UpdateBattle() {
             </div>
 
             {newBattle.photoURL && (
-              <p>
+              <div className={styles.droppedImage}>
                 <img
                   alt="Star Wars Battle"
                   width={200}
                   src={newBattle.photoURL}
                 />
-              </p>
+              </div>
             )}
 
             <div className={styles.fileDrop}>
