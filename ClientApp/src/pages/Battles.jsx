@@ -21,6 +21,7 @@ export function Battles() {
   const [battles, setBattles] = useState([])
   const [filterText, setFilterText] = useState('')
   const [nameOfEra, setNameOfEra] = useState('')
+  const [sortDirection, setSortDirection] = useState('Alphabetical')
 
   const params = useParams()
 
@@ -28,19 +29,33 @@ export function Battles() {
     const getBattles = async (filterText) => {
       let url = '/api/Battles'
 
-      // if (filterText.length !== 0) {
-      //   url = `/api/Battles?filter=${filterText}`
-      // }
-
       url = `/api/Battles?filter=${filterText}&era=${params.era}`
       const response = await axios.get(url)
-      setBattles(response.data)
+
+      let sortedBattles = response.data
+      if (sortDirection === 'Alphabetical') {
+        sortedBattles = response.data.sort((a, b) =>
+          a.name.localeCompare(b.name)
+        )
+      } else {
+        if (nameOfEra === 'Rise of the Empire') {
+          sortedBattles = response.data.sort(
+            (a, b) => parseInt(b.date) - parseInt(a.date)
+          )
+        } else {
+          sortedBattles = response.data.sort(
+            (a, b) => parseInt(a.date) - parseInt(b.date)
+          )
+        }
+      }
+
+      setBattles(sortedBattles)
     }
 
     setNameOfEra(params.era)
 
     getBattles(filterText)
-  }, [params.era, filterText])
+  }, [params.era, filterText, nameOfEra, sortDirection])
 
   const formatEra = (era) => {
     if (era === 'New Republic The First Order') {
@@ -48,6 +63,10 @@ export function Battles() {
     }
 
     return era
+  }
+
+  const selectSortDirection = (event) => {
+    setSortDirection(event.target.value)
   }
 
   return (
@@ -84,10 +103,9 @@ export function Battles() {
 
           <section className={styles.dropDownSort}>
             <p>Sort By:</p>
-            <select>
-              <option>Battle: A to Z</option>
-              <option>Year</option>
-              <option>Era</option>
+            <select onChange={selectSortDirection}>
+              <option value="Alphabetical">Battle: A to Z</option>
+              {nameOfEra === 'all' ? '' : <option value="ByYear">Year</option>}
             </select>
           </section>
 
