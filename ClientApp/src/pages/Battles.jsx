@@ -83,6 +83,26 @@ export function Battles() {
           </section>
 
           <h2>{formatEra(nameOfEra)}</h2>
+          {nameOfEra === 'Rise of the Empire' ? (
+            <h2 className={styles.date}>(32 - 0 BBY)</h2>
+          ) : (
+            ''
+          )}
+          {nameOfEra === 'Age of Rebellion' ? (
+            <h2 className={styles.date}>(0 - 5 ABY)</h2>
+          ) : (
+            ''
+          )}
+          {nameOfEra === 'New Republic The First Order' ? (
+            <h2 className={styles.date}>(5 - 35 ABY)</h2>
+          ) : (
+            ''
+          )}
+          {nameOfEra === 'all' ? (
+            <h2 className={styles.date}>(32 BBY - 35 ABY)</h2>
+          ) : (
+            ''
+          )}
 
           <section className={styles.searchContainer}>
             <div className={styles.search}>

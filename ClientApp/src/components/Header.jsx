@@ -14,12 +14,7 @@ export function Header() {
   return (
     <header>
       <nav className={styles.headerContainer}>
-        {/* {isLoggedIn() && (
-              <Link to="/new">
-                <i className="fa fa-plus"></i> Battles
-              </Link>
-            )} */}
-        <div className={styles.battleHeaderTest}>
+        <div>
           <Link to="/" className={styles.battlesHeader}>
             Battle Archives
           </Link>

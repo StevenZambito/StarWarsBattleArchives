@@ -9,7 +9,6 @@ import styles from '../styles/CreateBattle.module.scss'
 export function CreateBattle() {
   const [combatant1, setCombatant1] = useState('')
   const [combatant2, setCombatant2] = useState('')
-
   const [isUploading, setIsUploading] = useState(false)
 
   const [newBattle, setNewBattle] = useState({
@@ -32,13 +31,17 @@ export function CreateBattle() {
   const updateBattle = (event) => {
     const value = event.target.value
     const fieldName = event.target.name
-    const updatedBattle = { ...newBattle, [fieldName]: value }
+    let updatedBattle
+    if (event.target.name === 'description') {
+      updatedBattle = { ...newBattle, [fieldName]: value }
+    } else {
+      updatedBattle = { ...newBattle, [fieldName]: value.toLower() }
+    }
 
     setNewBattle(updatedBattle)
   }
 
   const addCombatant1ToList = (event) => {
-    // Prevents the page from refreshing
     event.preventDefault()
 
     setNewBattle((previousBattle) => ({
@@ -46,7 +49,6 @@ export function CreateBattle() {
       combatants1: [...previousBattle.combatants1, combatant1],
     }))
 
-    // Clears out the input after adding to list
     setCombatant1('')
   }
 
@@ -61,7 +63,6 @@ export function CreateBattle() {
   }
 
   const addCombatant2ToList = (event) => {
-    // Prevents the page from refreshing
     event.preventDefault()
 
     setNewBattle((previousBattle) => ({
@@ -69,7 +70,6 @@ export function CreateBattle() {
       combatants2: [...previousBattle.combatants2, combatant2],
     }))
 
-    // Clears out the input after adding to list
     setCombatant2('')
   }
 
@@ -77,7 +77,6 @@ export function CreateBattle() {
     const newCombatants2List = [...newBattle.combatants2].filter(
       (x, i) => i !== index
     )
-    // setCombatants2(newCombatants2List)
     setNewBattle((previousBattle) => ({
       ...previousBattle,
       combatants2: [...newCombatants2List],

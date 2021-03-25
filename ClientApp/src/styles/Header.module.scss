@@ -3,9 +3,12 @@
   display: flex;
   align-items: center;
   padding: 0.6rem 0rem 0rem 0rem;
-  li {
-    border: solid pink;
-  }
+}
+
+.battlesHeader {
+  color: yellow;
+  font-size: 2rem;
+  text-shadow: 1px 1px 2px black, 0 0 1em #ffe81f, 0 0 0.2em #ffe81f;
 }
 
 .linksContainer {
@@ -29,12 +32,6 @@
 
 .navLink:hover {
   color: #ffe81f;
-}
-
-.battlesHeader {
-  color: yellow;
-  font-size: 2rem;
-  text-shadow: 1px 1px 2px black, 0 0 1em #ffe81f, 0 0 0.2em #ffe81f;
 }
 
 header nav {

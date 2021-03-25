@@ -11,7 +11,6 @@ export function UpdateBattle() {
   const id = params.id
 
   const [combatant1, setCombatant1] = useState('')
-
   const [combatant2, setCombatant2] = useState('')
 
   const [isUploading, setIsUploading] = useState(false)
@@ -53,7 +52,6 @@ export function UpdateBattle() {
   }
 
   const addCombatant1ToList = (event) => {
-    // Prevents the page from refreshing
     event.preventDefault()
 
     setNewBattle((previousBattle) => ({
@@ -61,7 +59,6 @@ export function UpdateBattle() {
       combatants1: [...previousBattle.combatants1, combatant1],
     }))
 
-    // Clears out the input after adding to list
     setCombatant1('')
   }
 
@@ -76,7 +73,6 @@ export function UpdateBattle() {
   }
 
   const addCombatant2ToList = (event) => {
-    // Prevents the page from refreshing
     event.preventDefault()
 
     setNewBattle((previousBattle) => ({
@@ -84,7 +80,6 @@ export function UpdateBattle() {
       combatants2: [...previousBattle.combatants2, combatant2],
     }))
 
-    // Clears out the input after adding to list
     setCombatant2('')
   }
 
@@ -92,7 +87,6 @@ export function UpdateBattle() {
     const newCombatants2List = [...newBattle.combatants2].filter(
       (x, i) => i !== index
     )
-    // setCombatants2(newCombatants2List)
     setNewBattle((previousBattle) => ({
       ...previousBattle,
       combatants2: [...newCombatants2List],
@@ -133,19 +127,14 @@ export function UpdateBattle() {
   }
 
   async function onDropFile(acceptedFiles) {
-    // Do something with the files
     const fileToUpload = acceptedFiles[0]
     console.log(fileToUpload)
-    // Create a formData object so we can send this
-    // to the API that is expecting som form data.
     const formData = new FormData()
-    // Append a field that is the form upload itself
+
     formData.append('file', fileToUpload)
 
     setIsUploading(true)
     try {
-      // Use fetch to send an authorization header and
-      // a body containing the form data with the file
       const response = await fetch('/api/Uploads', {
         method: 'POST',
         headers: {
@@ -153,10 +142,7 @@ export function UpdateBattle() {
         },
         body: formData,
       })
-      // If we receive a 200 OK response, set the
-      // URL of the photo in our state so that it is
-      // sent along when creating the restaurant,
-      // otherwise show an error
+
       if (response.status === 200) {
         const apiResponse = await response.json()
         const url = apiResponse.url
@@ -165,7 +151,6 @@ export function UpdateBattle() {
         setErrorMessage('Unable to upload image')
       }
     } catch {
-      // Catch any network errors and show the user we could not process their upload
       setErrorMessage('Unable to upload image')
     }
     setIsUploading(false)
@@ -185,7 +170,6 @@ export function UpdateBattle() {
     dropZoneMessage = 'Drop the files here ...'
   }
 
-  // If we don't have any restaurant ID, return an empty component
   if (!newBattle.id) {
     return <></>
   }
@@ -322,7 +306,6 @@ export function UpdateBattle() {
                 Add
               </button>
             </div>
-            {/* <p id={styles.vs}>vs</p> */}
             <div className={styles.formInput}>
               <label htmlFor="combatants2">Combatants 2</label>
               <div className={styles.combatantsContainer}>

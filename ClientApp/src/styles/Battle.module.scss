@@ -119,14 +119,17 @@
 
 #com1 {
   color: rgba(0, 0, 255);
+  text-shadow: 1px 0 0 rgb(221, 221, 221), 0 -1px 0 rgb(221, 221, 221),
+    0 1px 0 rgb(221, 221, 221), -1px 0 0 rgb(221, 221, 221);
 }
 
 #com2 {
   color: rgba(255, 0, 0);
+  text-shadow: 1px 0 0 rgb(221, 221, 221), 0 -1px 0 rgb(221, 221, 221),
+    0 1px 0 rgb(221, 221, 221), -1px 0 0 rgb(221, 221, 221);
 }
 
 .descriptionAndCommentsSection {
-  // padding: 1rem;
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: bold;
   font-size: 1.5rem;
@@ -148,9 +151,12 @@
 }
 
 .battleDescriptionContainer {
-  border: solid 0.1rem rgb(89, 89, 89);
+  margin-top: 5rem;
   background-color: rgb(198, 198, 198, 0.8);
   padding: 1rem;
+  p {
+    line-height: 2rem;
+  }
 }
 
 #battleDescriptionHeading {
@@ -182,7 +188,6 @@
 .uploadCommentContainer {
   background-color: rgb(22, 69, 97, 0.8);
   padding: 1rem;
-  // margin: 1rem;
 }
 
 .userImage {
@@ -237,7 +242,6 @@
 .commentsContainer {
   border-top: solid 0.1rem black;
   margin-top: 3rem;
-  // margin: 3rem 1rem 0rem 1rem;
 }
 
 .commentsWrapper {
@@ -259,6 +263,9 @@
   .imageDiv {
     height: auto;
   }
+  .battleDescriptionContainer {
+    margin-top: 0rem;
+  }
 }
 
 @media screen and (max-width: 1255px) {
@@ -268,6 +275,9 @@
       border-top: solid 0.05rem rgb(45, 45, 45);
       border-bottom: solid 0.05rem rgb(45, 45, 45);
     }
+  }
+  .battleDescriptionContainer {
+    border: solid 0.1rem black;
   }
 }
 
