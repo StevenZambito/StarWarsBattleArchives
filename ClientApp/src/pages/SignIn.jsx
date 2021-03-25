@@ -62,6 +62,7 @@ export function SignIn() {
                   name="email"
                   id="email"
                   onChange={handleStringFieldChange}
+                  autoComplete="off"
                 />
               </p>
               <p className={styles.formInput}>
@@ -71,6 +72,7 @@ export function SignIn() {
                   name="password"
                   id="password"
                   onChange={handleStringFieldChange}
+                  autoComplete="off"
                 />
               </p>
               <p>

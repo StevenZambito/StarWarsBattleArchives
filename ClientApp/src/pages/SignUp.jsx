@@ -114,6 +114,7 @@ export function SignUp() {
                   type="text"
                   name="fullName"
                   id="fullName"
+                  autoComplete="off"
                   onChange={handleStringFieldChange}
                 />
               </p>
@@ -123,6 +124,7 @@ export function SignUp() {
                   type="email"
                   name="email"
                   id="email"
+                  autoComplete="off"
                   onChange={handleStringFieldChange}
                 />
               </p>
@@ -132,6 +134,7 @@ export function SignUp() {
                   type="password"
                   name="password"
                   id="password"
+                  autoComplete="off"
                   onChange={handleStringFieldChange}
                 />
               </p>

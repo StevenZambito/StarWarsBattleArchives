@@ -21,7 +21,7 @@ export function Header() {
         </div>
         <div className={styles.linksContainer}>
           <div className={styles.theLinks}>
-            {isLoggedIn() && <p>{user.fullName}</p>}
+            {isLoggedIn() && <p className={styles.userName}>{user.fullName}</p>}
             {isLoggedIn() || (
               <Link to="/signin" className={styles.navLink}>
                 Sign in

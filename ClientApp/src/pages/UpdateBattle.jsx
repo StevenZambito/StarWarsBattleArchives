@@ -45,12 +45,8 @@ export function UpdateBattle() {
   const updateBattle = (event) => {
     const value = event.target.value
     const fieldName = event.target.name
-    let updatedBattle
-    if (event.target.name === 'description') {
-      updatedBattle = { ...newBattle, [fieldName]: value }
-    } else {
-      updatedBattle = { ...newBattle, [fieldName]: value.toLower() }
-    }
+
+    const updatedBattle = { ...newBattle, [fieldName]: value }
 
     setNewBattle(updatedBattle)
   }
@@ -99,7 +95,6 @@ export function UpdateBattle() {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log('hey')
     return
   }
 
@@ -201,6 +196,7 @@ export function UpdateBattle() {
                 type="text"
                 name="name"
                 id="name"
+                autoComplete="off"
                 value={newBattle.name}
                 placeholder="Enter name of Battle"
                 onChange={(event) => updateBattle(event)}
@@ -212,6 +208,7 @@ export function UpdateBattle() {
                 type="text"
                 name="conflict"
                 id="conflict"
+                autoComplete="off"
                 value={newBattle.conflict}
                 onChange={(event) => updateBattle(event)}
                 placeholder="ex: Clone Wars, Galactic Civil War, etc."
@@ -263,6 +260,7 @@ export function UpdateBattle() {
                 type="text"
                 name="date"
                 id="date"
+                autoComplete="off"
                 value={newBattle.date}
                 onChange={(event) => updateBattle(event)}
               />
@@ -273,6 +271,7 @@ export function UpdateBattle() {
                 type="text"
                 name="location"
                 id="location"
+                autoComplete="off"
                 onChange={(event) => updateBattle(event)}
                 value={newBattle.location}
               />
@@ -300,6 +299,7 @@ export function UpdateBattle() {
                 type="text"
                 name="combatants1"
                 id="combatants1"
+                autoComplete="off"
                 value={combatant1}
               />
               <button
@@ -333,6 +333,7 @@ export function UpdateBattle() {
                 type="text"
                 name="combatants2"
                 id="combatants2"
+                autoComplete="off"
                 value={combatant2}
               />
               <button
@@ -349,6 +350,7 @@ export function UpdateBattle() {
               <textarea
                 name="outcome"
                 id="outcome"
+                autoComplete="off"
                 value={newBattle.outcome}
                 onChange={(event) => updateBattle(event)}
                 placeholder="Enter a brief description about the outcome of the battle"
@@ -360,6 +362,7 @@ export function UpdateBattle() {
               <textarea
                 name="description"
                 id="description"
+                autoComplete="off"
                 value={newBattle.description}
                 onChange={(event) => updateBattle(event)}
                 placeholder="Enter a brief description about the battle"
