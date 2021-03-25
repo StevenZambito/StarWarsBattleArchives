@@ -169,7 +169,7 @@ export function Battle() {
             <div>
               <p className={styles.comNames}>Combatants</p>
               <p id={styles.com1}>{battle.combatants1.join(', ')}</p>
-              <p id={styles.com2}>{battle.combatants2}</p>
+              <p id={styles.com2}>{battle.combatants2.join(', ')}</p>
             </div>
           </div>
         </section>

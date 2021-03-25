@@ -48,16 +48,6 @@ export function CreateBattle() {
     setCombatant1('')
   }
 
-  const deleteCombatant1 = (index) => {
-    const newCombatants1List = [...newBattle.combatants1].filter(
-      (x, i) => i !== index
-    )
-    setNewBattle((previousBattle) => ({
-      ...previousBattle,
-      combatants1: [...newCombatants1List],
-    }))
-  }
-
   const addCombatant2ToList = (event) => {
     event.preventDefault()
 
@@ -67,6 +57,16 @@ export function CreateBattle() {
     }))
 
     setCombatant2('')
+  }
+
+  const deleteCombatant1 = (index) => {
+    const newCombatants1List = [...newBattle.combatants1].filter(
+      (x, i) => i !== index
+    )
+    setNewBattle((previousBattle) => ({
+      ...previousBattle,
+      combatants1: [...newCombatants1List],
+    }))
   }
 
   const deleteCombatant2 = (index) => {
