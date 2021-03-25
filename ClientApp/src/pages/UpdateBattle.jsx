@@ -45,8 +45,12 @@ export function UpdateBattle() {
   const updateBattle = (event) => {
     const value = event.target.value
     const fieldName = event.target.name
-
-    const updatedBattle = { ...newBattle, [fieldName]: value }
+    let updatedBattle
+    if (event.target.name === 'description') {
+      updatedBattle = { ...newBattle, [fieldName]: value }
+    } else {
+      updatedBattle = { ...newBattle, [fieldName]: value.toLower() }
+    }
 
     setNewBattle(updatedBattle)
   }
