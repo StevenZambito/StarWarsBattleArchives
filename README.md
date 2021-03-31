@@ -1,6 +1,6 @@
 # [Battle Archives](https://battle-archives.herokuapp.com/)
 
-<img src="src/gifs/BattleArchives2.gif">
+<img src="public/assets/BattleArchives2.gif">
 
 ## Overview
 
