@@ -111,7 +111,7 @@ export function UpdateBattle() {
       if (error.response.status === 401) {
         setErrorMessage('Not authorized')
       } else if (error.response.status === 400) {
-        window.alert('hello')
+        window.alert('Error - See top of page for details')
         const errorString = Object.values(error.response.data.errors).join(' ')
         console.log(errorString)
         setErrorMessage(errorString.toLowerCase())
